@@ -6,10 +6,13 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -23,8 +26,15 @@ public class TauxRetard implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private double taux;
+    private double penalite;
+    private double pourcentagePremierMois;
+    private double pourcentageAutreMois;
 
+    @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateApplication;
+    
+    @OneToOne(mappedBy = "tauxRetard")
+    private TaxeAnnuelle taxeAnnuelle;
     public TauxRetard() {
     }
 
@@ -32,9 +42,22 @@ public class TauxRetard implements Serializable {
         this.id = id;
     }
 
-    public TauxRetard(Long id, double taux) {
-        this.id = id;
-        this.taux = taux;
+    public TauxRetard(double penalite, double pourcentagePremierMois, double pourcentageAutreMois) {
+        this.penalite = penalite;
+        this.pourcentagePremierMois = pourcentagePremierMois;
+        this.pourcentageAutreMois = pourcentageAutreMois;
+    }
+
+   
+
+    public TaxeAnnuelle getTaxeAnnuelle() {
+       if(taxeAnnuelle==null)
+           taxeAnnuelle=new TaxeAnnuelle();
+        return taxeAnnuelle;
+    }
+
+    public void setTaxeAnnuelle(TaxeAnnuelle taxeAnnuelle) {
+        this.taxeAnnuelle = taxeAnnuelle;
     }
 
     
@@ -46,13 +69,38 @@ public class TauxRetard implements Serializable {
         this.id = id;
     }
 
-    public double getTaux() {
-        return taux;
+    public double getPenalite() {
+        return penalite;
     }
 
-    public void setTaux(double taux) {
-        if (taux>0 && taux<1)        
-         this.taux = taux;
+    public void setPenalite(double penalite) {
+        this.penalite = penalite;
+    }
+
+    public double getPourcentagePremierMois() {
+        return pourcentagePremierMois;
+    }
+
+    public void setPourcentagePremierMois(double pourcentagePremierMois) {
+        this.pourcentagePremierMois = pourcentagePremierMois;
+    }
+
+    public double getPourcentageAutreMois() {
+        return pourcentageAutreMois;
+    }
+
+    public void setPourcentageAutreMois(double pourcentageAutreMois) {
+        this.pourcentageAutreMois = pourcentageAutreMois;
+    }
+
+    
+
+    public Date getDateApplication() {
+        return dateApplication;
+    }
+
+    public void setDateApplication(Date dateApplication) {
+        this.dateApplication = dateApplication;
     }
 
     
@@ -79,9 +127,10 @@ public class TauxRetard implements Serializable {
 
     @Override
     public String toString() {
-        return "TauxRetard{" + "id=" + id + ", taux=" + taux + '}';
+        return "TauxRetard{" + "id=" + id + ", penalite=" + penalite + ", pourcentagePremierMois=" + pourcentagePremierMois + ", pourcentageAutreMois=" + pourcentageAutreMois + '}';
     }
 
+    
 
     
 }

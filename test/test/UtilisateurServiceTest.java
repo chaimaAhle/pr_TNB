@@ -3,22 +3,23 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package service;
+package test;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import service.UtilisateurService;
 import static org.junit.Assert.*;
 
 /**
  *
  * @author simob
  */
-public class RedevableServiceTest {
+public class UtilisateurServiceTest {
     
-    public RedevableServiceTest() {
+    public UtilisateurServiceTest() {
     }
     
     @BeforeClass
@@ -38,21 +39,16 @@ public class RedevableServiceTest {
     }
 
     /**
-     * Test of ajouter method, of class RedevableService.
+     * Test of ajouter method, of class UtilisateurService.
      */
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        String cin = "EE793372";
-        String nom = "BENMANSOUR";
-        String prenom = "MOHAMMED";
-        char sexe = 'M';
-        String adresse = "AZERTYUIOP";
-        Long numTel = null;
-        Long codePost = null;
-        RedevableService instance = new RedevableService();
+        int matricule = 131;
+        String motDepasse = "13089122";
+        UtilisateurService instance = new UtilisateurService();
         int expResult = 1;
-        int result = instance.ajouter(cin, nom, prenom, sexe, adresse, numTel, codePost);
+        int result = instance.ajouter(matricule, motDepasse);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }

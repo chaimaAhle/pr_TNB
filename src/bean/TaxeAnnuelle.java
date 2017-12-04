@@ -29,21 +29,21 @@ public class TaxeAnnuelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
+   
+    private int annee;
     
+     @Temporal(javax.persistence.TemporalType.DATE)
+    private Date dateTaxe;
+     
     @Temporal(javax.persistence.TemporalType.DATE)
-    private Date datePresentation;
-    
-    @ManyToOne
-    private Redevable redevable;
+    private Date datePresentaion;
     
     @ManyToOne
     private Terrain terrain;
     
-    @Temporal(javax.persistence.TemporalType.DATE)
-    private Date dateTaxe;
-    
-    @OneToOne
+    @ManyToOne
     private TauxTaxe tauxTaxe;
+    
     
     @OneToOne
     private  TauxRetard tauxRetard;
@@ -58,6 +58,11 @@ public class TaxeAnnuelle implements Serializable {
         this.id = id;
     }
 
+    public TaxeAnnuelle(int annee) {
+        this.annee = annee;
+    }
+
+    
     public Long getId() {
         return id;
     }
@@ -66,17 +71,23 @@ public class TaxeAnnuelle implements Serializable {
         this.id = id;
     }
 
-    public Redevable getRedevable() {
-       if(redevable==null){
-           Redevable redevable= new Redevable();
-       }
-        return redevable;
+    public int getAnnee() {
+        return annee;
     }
 
-    public void setRedevable(Redevable redevable) {
-        this.redevable = redevable;
+    public void setAnnee(int annee) {
+        this.annee = annee;
     }
 
+    public Date getDatePresentaion() {
+        return datePresentaion;
+    }
+
+    public void setDatePresentaion(Date datePresentaion) {
+        this.datePresentaion = datePresentaion;
+    }
+
+    
     public Terrain getTerrain() {
         if(terrain==null){
             Terrain terrain=new Terrain();
@@ -148,9 +159,10 @@ public class TaxeAnnuelle implements Serializable {
 
     @Override
     public String toString() {
-        return "TaxeAnnuelle{" + "id=" + id + '}';
+        return "TaxeAnnuelle{" + "id=" + id + ", annee=" + annee + '}';
     }
-    
+
+ 
    
 
 }

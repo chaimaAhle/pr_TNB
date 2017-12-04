@@ -7,11 +7,13 @@ package bean;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
@@ -26,11 +28,17 @@ public class TauxTaxe implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    private double tauxTaxe;
-    @OneToOne
-    private CategorieTerrain categorieTerrain;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApplication;
+    
+    private double tauxTaxe;
+    
+    @OneToOne
+    private CategorieTerrain categorieTerrain;
+    
+    @OneToMany(mappedBy = "tauxTaxe")
+    private List<TaxeAnnuelle> taxeAnnuelles;
     
 
     public TauxTaxe() {
@@ -57,7 +65,7 @@ public class TauxTaxe implements Serializable {
     }
 
     public void setTauxTaxe(double tauxTaxe) {
-       if(tauxTaxe>0 && tauxTaxe<1)
+       //if(tauxTaxe>0 && tauxTaxe<1)
         this.tauxTaxe = tauxTaxe;
     }
 
