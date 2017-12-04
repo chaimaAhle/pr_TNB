@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Temporal;
 
 /**
  *
@@ -28,59 +29,39 @@ public class Terrain implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long numeroLot;
-    private int categorieHabitation; //1:zoneImmeuble 2:zoneVilla,zoneHabitatIndiv,et autres zone
     private String ville;
     private String ZoneGeo;
     private double surface;
+    @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateAchat;
+    @ManyToOne
+    private CategorieTerrain categorieTerrain;
     @ManyToOne
     private Redevable redevable;
     @OneToMany(mappedBy = "terrain")
-    private List<TaxeAnnuelle> taxeAnnuelle;
+    private List<TaxeAnnuelle> taxeAnnuelles;
     @OneToMany(mappedBy = "terrain")
     private List<Notification> notifications;
 
     public Terrain() {
     }
 
-    public Terrain(Long nLot) {
-        this.numeroLot = nLot;
+    public Terrain(Long numeroLot) {
+        this.numeroLot = numeroLot;
     }
 
-    public Terrain(Long numeroLot, int categorieHabitation, String ville, String ZoneGeo, double surface, Date dateAchat, Redevable redevable) {
-        this.numeroLot = numeroLot;
-        this.categorieHabitation = categorieHabitation;
+    public Terrain(String ville, String ZoneGeo, double surface) {
         this.ville = ville;
         this.ZoneGeo = ZoneGeo;
         this.surface = surface;
-        this.dateAchat = dateAchat;
-        this.redevable = redevable;
     }
 
-    public Terrain(int categorieHabitation) {
-        this.categorieHabitation = categorieHabitation;
-    }
-
-    public Terrain(String ville, String ZoneGeo) {
-        this.ville = ville;
-        this.ZoneGeo = ZoneGeo;
-    }
-
-    public Long getnLot() {
+    public Long getNumeroLot() {
         return numeroLot;
     }
 
-    public void setnLot(Long numeroLot) {
+    public void setNumeroLot(Long numeroLot) {
         this.numeroLot = numeroLot;
-    }
-
-    public int getCategorieHabitation() {
-        return categorieHabitation;
-    }
-
-    public void setCategorieHabitation(int categorieHabitation) {
-       if(categorieHabitation==1 ||categorieHabitation==2)
-        this.categorieHabitation = categorieHabitation;
     }
 
     public String getVille() {
@@ -104,7 +85,6 @@ public class Terrain implements Serializable {
     }
 
     public void setSurface(double surface) {
-       if(surface>0)
         this.surface = surface;
     }
 
@@ -116,10 +96,19 @@ public class Terrain implements Serializable {
         this.dateAchat = dateAchat;
     }
 
+    public CategorieTerrain getCategorieTerrain() {
+        if(categorieTerrain==null)
+            categorieTerrain=new CategorieTerrain();
+        return categorieTerrain;
+    }
+
+    public void setCategorieTerrain(CategorieTerrain categorieTerrain) {
+        this.categorieTerrain = categorieTerrain;
+    }
+
     public Redevable getRedevable() {
-        if(redevable==null){
-            redevable= new Redevable();
-        }
+       if(redevable==null)
+           redevable= new Redevable();
         return redevable;
     }
 
@@ -127,21 +116,30 @@ public class Terrain implements Serializable {
         this.redevable = redevable;
     }
 
-    public List<TaxeAnnuelle> getTaxeAnnuelle() {
-       if(taxeAnnuelle==null){
-           taxeAnnuelle= new ArrayList<>();
-       }
-        return taxeAnnuelle;
+    public List<TaxeAnnuelle> getTaxeAnnuelles() {
+        if(taxeAnnuelles==null)
+            taxeAnnuelles=new ArrayList<>();
+        return taxeAnnuelles;
     }
 
-    public void setTaxeAnnuelle(List<TaxeAnnuelle> taxeAnnuelle) {
-        this.taxeAnnuelle = taxeAnnuelle;
+    public void setTaxeAnnuelles(List<TaxeAnnuelle> taxeAnnuelles) {
+        this.taxeAnnuelles = taxeAnnuelles;
+    }
+
+    public List<Notification> getNotifications() {
+       if(notifications==null)
+           notifications=new ArrayList<>();
+        return notifications;
+    }
+
+    public void setNotifications(List<Notification> notifications) {
+        this.notifications = notifications;
     }
 
     @Override
     public int hashCode() {
-        int hash = 3;
-        hash = 89 * hash + Objects.hashCode(this.numeroLot);
+        int hash = 5;
+        hash = 17 * hash + Objects.hashCode(this.numeroLot);
         return hash;
     }
 
@@ -165,13 +163,9 @@ public class Terrain implements Serializable {
 
     @Override
     public String toString() {
-        return "Terrain{" + "nLot=" + numeroLot + ", categorieHabitation=" + categorieHabitation + ", ville=" + ville + ", ZoneGeo=" + ZoneGeo + ", surface=" + surface + ", dateAchat=" + dateAchat + '}';
+        return "Terrain{" + "numeroLot=" + numeroLot + ", ville=" + ville + ", ZoneGeo=" + ZoneGeo + ", surface=" + surface + '}';
     }
 
-
-    
-    
-    
-   
+ 
     
 }

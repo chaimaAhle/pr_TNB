@@ -40,10 +40,6 @@ public class Redevable implements Serializable {
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;
     
-    @OneToMany(mappedBy = "redevable")
-    private List<TaxeAnnuelle> taxeAnnuelles;
-
-    
     
     
     public Redevable() {
@@ -134,16 +130,6 @@ public class Redevable implements Serializable {
         return terrains;
     }
 
-    public List<TaxeAnnuelle> getTaxeAnnuelles() {
-       if(taxeAnnuelles==null){
-           List<TaxeAnnuelle> taxeAnnuelles= new ArrayList<>();
-       }
-        return taxeAnnuelles;
-    }
-
-    public void setTaxeAnnuelles(List<TaxeAnnuelle> taxeAnnuelles) {
-        this.taxeAnnuelles = taxeAnnuelles;
-    }
     
     
 
