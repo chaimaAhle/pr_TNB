@@ -9,7 +9,7 @@ import bean.Redevable;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class RedevableService extends AbstractFacade<Redevable>{
     

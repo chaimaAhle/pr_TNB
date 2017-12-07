@@ -20,7 +20,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class Notification implements Serializable {

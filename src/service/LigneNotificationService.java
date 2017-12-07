@@ -9,15 +9,15 @@ import bean.LigneNotification;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class LigneNotificationService extends AbstractFacade<LigneNotification>{
     
     public LigneNotificationService() {
         super(LigneNotification.class);
     }
-    public int add(){
-    LigneNotification ligneNotification=new LigneNotification();
+    public int add(Long id){
+    LigneNotification ligneNotification=new LigneNotification(id);
         create(ligneNotification);
         return 1;
     }

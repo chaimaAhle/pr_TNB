@@ -17,7 +17,7 @@ import javax.persistence.OneToOne;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class CategorieTerrain implements Serializable {

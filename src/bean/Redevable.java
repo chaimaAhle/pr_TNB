@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class Redevable implements Serializable {

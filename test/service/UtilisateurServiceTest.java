@@ -3,19 +3,18 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package service;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import service.UtilisateurService;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class UtilisateurServiceTest {
     
@@ -44,13 +43,14 @@ public class UtilisateurServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        int matricule = 131;
-        String motDepasse = "13089122";
+        int matricule = 0;
+        String motDepasse = "";
         UtilisateurService instance = new UtilisateurService();
-        int expResult = 1;
+        int expResult = 0;
         int result = instance.ajouter(matricule, motDepasse);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

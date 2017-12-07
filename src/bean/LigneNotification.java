@@ -15,7 +15,7 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class LigneNotification implements Serializable {
@@ -72,7 +72,7 @@ public class LigneNotification implements Serializable {
     }
 
     public void setNombreMoisRetard(int nombreMoisRetard) {
-               if(nombreMoisRetard>0)
+              
         this.nombreMoisRetard = nombreMoisRetard;
     }
 

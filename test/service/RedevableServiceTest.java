@@ -3,23 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package test;
+package service;
 
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import service.LigneNotificationService;
 import static org.junit.Assert.*;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
-public class LigneNotificationServiceTest {
+public class RedevableServiceTest {
     
-    public LigneNotificationServiceTest() {
+    public RedevableServiceTest() {
     }
     
     @BeforeClass
@@ -39,16 +38,24 @@ public class LigneNotificationServiceTest {
     }
 
     /**
-     * Test of add method, of class LigneNotificationService.
+     * Test of ajouter method, of class RedevableService.
      */
     @Test
-    public void testAdd() {
-        System.out.println("add");
-        LigneNotificationService instance = new LigneNotificationService();
-        int expResult = 1;
-        int result = instance.add();
+    public void testAjouter() {
+        System.out.println("ajouter");
+        String cin = "";
+        String nom = "";
+        String prenom = "";
+        char sexe = ' ';
+        String adresse = "";
+        Long numTel = null;
+        Long codePost = null;
+        RedevableService instance = new RedevableService();
+        int expResult = 0;
+        int result = instance.ajouter(cin, nom, prenom, sexe, adresse, numTel, codePost);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }
