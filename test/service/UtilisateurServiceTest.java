@@ -5,6 +5,7 @@
  */
 package service;
 
+import bean.Utilisateur;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -38,16 +39,19 @@ public class UtilisateurServiceTest {
     }
 
     /**
-     * Test of ajouter method, of class UtilisateurService.
+     * Test of seConnecter method, of class UtilisateurService.
      */
+   
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        int matricule = 131;
-        String motDepasse = "13089122";
+        String matricule = "13089122";
+        String motDepasse = "EE793372";
+        String nom = "BENMANSOUR";
+        String prenom = "MOHAMMED";
         UtilisateurService instance = new UtilisateurService();
         int expResult = 1;
-        int result = instance.ajouter(matricule, motDepasse);
+        int result = instance.ajouter(matricule, motDepasse, nom, prenom);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
     }

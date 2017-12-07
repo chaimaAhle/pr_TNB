@@ -21,7 +21,7 @@ public class Utilisateur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-     private int matricule;//login
+     private String matricule;//login
     private String motDepasse;
     private String nom;
     private String prenom;
@@ -29,27 +29,27 @@ public class Utilisateur implements Serializable {
     public Utilisateur() {
     }
 
-    public Utilisateur(int matricule) {
+    public Utilisateur(String matricule) {
         this.matricule = matricule;
     }
 
-    public Utilisateur(int matricule, String motDepasse, String nom, String prenom) {
+    public Utilisateur(String matricule, String motDepasse, String nom, String prenom) {
         this.matricule = matricule;
         this.motDepasse = motDepasse;
         this.nom = nom;
         this.prenom = prenom;
     }
 
-    public Utilisateur(int matricule, String motDepasse) {
+    public Utilisateur(String matricule, String motDepasse) {
         this.matricule = matricule;
         this.motDepasse = motDepasse;
     }
 
-    public int getMatricule() {
+    public String getMatricule() {
         return matricule;
     }
 
-    public void setMatricule(int matricule) {
+    public void setMatricule(String matricule) {
         this.matricule = matricule;
     }
 
