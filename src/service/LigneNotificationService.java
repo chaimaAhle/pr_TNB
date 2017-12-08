@@ -9,7 +9,7 @@ import bean.LigneNotification;
 
 /**
  *
- * @author Aniela
+ * @author simob
  */
 public class LigneNotificationService extends AbstractFacade<LigneNotification>{
     

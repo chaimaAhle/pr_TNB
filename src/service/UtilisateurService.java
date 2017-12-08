@@ -13,13 +13,26 @@ import bean.Utilisateur;
  */
 public class UtilisateurService extends AbstractFacade<Utilisateur>{
     
+    public int seConnecter(Utilisateur utilisateur){
+        Utilisateur loadedUtilisateur= find(utilisateur.getMatricule());
+        if(loadedUtilisateur==null){
+         return -1;   
+        }else if(!loadedUtilisateur.getMotDepasse().equals(utilisateur.getMotDepasse())){
+            return -2;
+        }else{
+            return 1;
+        }
+    }
+    
     public UtilisateurService() {
         super(Utilisateur.class);
     }
     
-    public int ajouter(int matricule,String motDepasse){
-        Utilisateur utilisateur= new Utilisateur(matricule, motDepasse);
+    public int ajouter(String matricule,String motDepasse,String nom, String prenom){
+        Utilisateur utilisateur= new Utilisateur(matricule, motDepasse, nom, prenom);
         create(utilisateur);
         return 1;
     }
+    
+    
 }

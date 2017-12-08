@@ -11,6 +11,14 @@
     <class>bean.TaxeAnnuelle</class>
     <class>bean.Terrain</class>
     <class>bean.Utilisateur</class>
+    <class>bean.CategorieTerrain</class>
+    <class>bean.LigneNotification</class>
+    <class>bean.Notification</class>
+    <class>bean.Redevable</class>
+    <class>bean.TauxRetard</class>
+    <class>bean.TauxTaxe</class>
+    <class>bean.TaxeAnnuelle</class>
+    <class>bean.Terrain</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tnb_base?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

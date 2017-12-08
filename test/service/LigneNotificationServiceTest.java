@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Aniela
+ * @author simob
  */
 public class LigneNotificationServiceTest {
     
@@ -45,7 +45,7 @@ public class LigneNotificationServiceTest {
         System.out.println("add");
         Long id = 1L;
         LigneNotificationService instance = new LigneNotificationService();
-        int expResult = 1;
+        int expResult = 0;
         int result = instance.add(id);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.

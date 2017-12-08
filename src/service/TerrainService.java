@@ -9,7 +9,7 @@ import bean.Terrain;
 
 /**
  *
- * @author Aniela
+ * @author simob
  */
 public class TerrainService extends AbstractFacade<Terrain>{
     
