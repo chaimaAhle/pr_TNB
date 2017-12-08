@@ -22,4 +22,8 @@ public class RedevableService extends AbstractFacade<Redevable>{
         create(redevable);
         return 1;
     }
+    
+    public Redevable rechercher(String cin, String nom,String prenom, char sexe, String adresse, Long numTel, Long codePost){
+        
+    }
 }

@@ -5,7 +5,7 @@
  */
 package helper;
 
-import bean.Compte;
+import bean.Redevable;
 import java.util.List;
 import javax.swing.JTable;
 
@@ -13,18 +13,29 @@ import javax.swing.JTable;
  *
  * @author YOUNES
  */
-public class CompteHelper extends AbstractHelper<Compte> {
+public class CompteHelper extends AbstractHelper<Redevable> {
 
     private static AbstractHelperItem[] titres;
 
     static {
         titres = new AbstractHelperItem[]{
-            new AbstractHelperItem("RIB ", "id"),
-            new AbstractHelperItem("SOLDE", "solde")};
+            new AbstractHelperItem("CIN ", "cin"),
+            new AbstractHelperItem("NOM ", "nom"),
+            new AbstractHelperItem("PRENOM ", "prenom"),
+            new AbstractHelperItem("SEXE ", "sexe"),
+            new AbstractHelperItem("ADRESSE ", "adress"),
+            new AbstractHelperItem("TELEPHONE ", "numTel"),
+            new AbstractHelperItem("CODEPOSTAL ", "codePost")};
+ 
+
+
+
+
+
 
     }
 
-    public CompteHelper(JTable jTable, List<Compte> list) {
+    public CompteHelper(JTable jTable, List<Redevable> list) {
         super(titres, jTable, list);
     }
 
