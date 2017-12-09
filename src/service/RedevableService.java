@@ -6,6 +6,7 @@
 package service;
 
 import bean.Redevable;
+import jdk.nashorn.internal.runtime.regexp.joni.SearchAlgorithm;
 
 /**
  *
@@ -23,7 +24,14 @@ public class RedevableService extends AbstractFacade<Redevable>{
         return 1;
     }
     
-    public Redevable rechercher(String cin, String nom,String prenom, char sexe, String adresse, Long numTel, Long codePost){
-        
+     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
+        String query ="SELECT r from Redevable where 1=1";
+        query +=SearchUtil.addConstraint("a", "nbrPoint", "=", cin);
+        query+=SearchUtil.addConstraint("a", "nbrPoint",nom);
+        query+=SearchUtil.addConstraint("a", "nbrPoint",sexe);
+        query+=SearchUtil.addConstraint("a", "nbrPoint",adresse);
+        query+=SearchUtil.addConstraint("a", "nbrPoint",numTel);
+        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
+      return reloaded(query);
     }
 }
