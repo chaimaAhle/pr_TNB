@@ -28,10 +28,21 @@ public class UtilisateurService extends AbstractFacade<Utilisateur>{
         super(Utilisateur.class);
     }
     
-    public int ajouter(String matricule,String motDepasse,String nom, String prenom){
-        Utilisateur utilisateur= new Utilisateur(matricule, motDepasse, nom, prenom);
-        create(utilisateur);
-        return 1;
+    public int ajouter(String matricule,String motDePasse,String nom, String prenom){
+        if(matricule==null){
+            return -1;
+        }else if(motDePasse==null || motDePasse.length()<6){
+            return -2;
+        }else if(nom==null){
+            return -3;
+        }else if (prenom==null){
+            return -4;
+        }else{
+            Utilisateur utilisateur= new Utilisateur(matricule, motDePasse, nom, prenom);
+            create(utilisateur);
+            return 1;
+        }
+        
     }
     
     

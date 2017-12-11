@@ -40,14 +40,6 @@ public class TerrainServiceTest {
     /**
      * Test of add method, of class TerrainService.
      */
-    @Test
-    public void testAdd() {
-        System.out.println("add");
-        TerrainService instance = new TerrainService();
-        int expResult = 1;
-        int result = instance.add();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-    }
+    
     
 }

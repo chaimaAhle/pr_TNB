@@ -5,7 +5,10 @@
  */
 package service;
 
+import bean.CategorieTerrain;
+import bean.Redevable;
 import bean.Terrain;
+import java.util.Date;
 
 /**
  *
@@ -16,10 +19,23 @@ public class TerrainService extends AbstractFacade<Terrain>{
     public TerrainService() {
         super(Terrain.class);
     }
-    public int add(){
-        Terrain terrain=new Terrain(Long.MIN_VALUE);
-        create(terrain);
-        return 1;
+    RedevableService redevableService= new RedevableService();
+    public int ajouter(String ville,String ZoneGeo,double surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
+       if(ville==null){
+            return -1;
+        }else if(ZoneGeo==null){
+            return -2;
+        }else if (surface<100.0){
+            return -3;
+        }else if(categorieTerrain==null){
+            return -2;
+        }else{
+            Terrain terrain= new Terrain(ville, ZoneGeo, surface);
+            terrain.setCategorieTerrain(categorieTerrain);
+            terrain.setDateAchat(dateAchat);
+            terrain.setRedevable(redevableService.find(cneRedevable));
+            create(terrain);
+            return 1;
+        }
     }
-    
 }

@@ -13,7 +13,7 @@ import javax.swing.JTable;
  *
  * @author YOUNES
  */
-public class CompteHelper extends AbstractHelper<Redevable> {
+public class RedevableHelper extends AbstractHelper<Redevable> {
 
     private static AbstractHelperItem[] titres;
 
@@ -25,25 +25,22 @@ public class CompteHelper extends AbstractHelper<Redevable> {
             new AbstractHelperItem("SEXE ", "sexe"),
             new AbstractHelperItem("ADRESSE ", "adress"),
             new AbstractHelperItem("TELEPHONE ", "numTel"),
-            new AbstractHelperItem("CODEPOSTAL ", "codePost")};
- 
-
-
-
-
+            new AbstractHelperItem("CODEPOSTAL ", "codePost"),
+        new AbstractHelperItem("TELEPHONE ", "numTel")};
+            
 
 
     }
 
-    public CompteHelper(JTable jTable, List<Redevable> list) {
+    public RedevableHelper(JTable jTable, List<Redevable> list) {
         super(titres, jTable, list);
     }
 
-    public CompteHelper(AbstractHelperItem[] abstractHelperItem, JTable jTable) {
+    public RedevableHelper(AbstractHelperItem[] abstractHelperItem, JTable jTable) {
         super(titres, jTable);
     }
 
-    public CompteHelper(JTable jTable) {
+    public RedevableHelper(JTable jTable) {
         super(titres, jTable);
     }
 }

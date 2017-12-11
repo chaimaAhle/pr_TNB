@@ -22,8 +22,8 @@ public class RedevableService extends AbstractFacade<Redevable>{
         Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
         create(redevable);
         return 1;
-    }
-    
+        }
+
 //     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
         String query ="SELECT r from Redevable where 1=1";
 //        query +=SearchUtil.addConstraint("a", "nbrPoint", "=", cin);
@@ -34,4 +34,4 @@ public class RedevableService extends AbstractFacade<Redevable>{
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
 //      return reloaded(query);
 //    }
-}
+    }
