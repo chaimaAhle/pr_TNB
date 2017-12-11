@@ -6,6 +6,8 @@
 package service;
 
 import bean.Redevable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -18,12 +20,27 @@ public class RedevableService extends AbstractFacade<Redevable>{
         
     }
     public int ajouter(String cin,String nom,String prenom,char sexe,String adresse,Long numTel,Long codePost){
-        Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
-        create(redevable);
-        return 1;
+        if(cin==null){
+            return -1;
+        }else if(adresse==null){
+            return -2;
+        }else if(numTel==null){
+            return -3;
+        }else if (prenom==null){
+            return -4;
+        }else if (codePost==null){
+            return -4;
+        }else{
+             Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
+            create(redevable);
+            return 1;
+        }
+       
     }
     
-    public Redevable rechercher(String cin, String nom,String prenom, char sexe, String adresse, Long numTel, Long codePost){
-        
+    public List<Redevable> rechercher(String cin, String nom,String prenom, char sexe, String adresse, Long numTel, Long codePost){
+      List<Redevable> resRechercher=new ArrayList();
+      
+      return resRechercher;        
     }
 }

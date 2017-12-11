@@ -29,13 +29,13 @@ public class Redevable implements Serializable {
     
     private String prenom;
     
-    private char sexe;
+    private char   sexe;
     
     private String adresse;
     
-    private Long numTel;
+    private Long   numTel;
     
-    private Long codePost;
+    private Long   codePost;
     
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;
