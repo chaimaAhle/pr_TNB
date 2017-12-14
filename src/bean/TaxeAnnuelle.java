@@ -51,6 +51,7 @@ public class TaxeAnnuelle implements Serializable {
     
     
     
+    
     public TaxeAnnuelle() {
     }
 

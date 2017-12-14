@@ -33,9 +33,9 @@ public class Redevable implements Serializable {
 
     private String adresse;
     
-    private Long numTel;
+    private Long   numTel;
     
-    private Long codePost;
+    private Long   codePost;
     
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;

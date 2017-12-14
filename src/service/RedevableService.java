@@ -19,14 +19,26 @@ public class RedevableService extends AbstractFacade<Redevable>{
         
     }
     public int ajouter(String cin,String nom,String prenom,char sexe,String adresse,Long numTel,Long codePost){
-        Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
-        create(redevable);
-        return 1;
+        
+//       if(cin==null){
+//            return -1;
+//        }else if(adresse==null){
+//            return -2;
+//        }else if(numTel==null){
+//            return -3;
+//        }else if (prenom==null){
+//            return -4;
+//        }else if (codePost==null){
+//            return -4;
+//        }else{
+             Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
+            create(redevable);
+            return 1;
         }
-
+}
 //     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
-        String query ="SELECT r from Redevable where 1=1";
-//        query +=SearchUtil.addConstraint("a", "nbrPoint", "=", cin);
+//        String query ="SELECT r from Redevable where 1=1";
+//        query +=se.addConstraint("a", "nbrPoint", "=", cin);
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",nom);
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",sexe);
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",adresse);
@@ -34,4 +46,4 @@ public class RedevableService extends AbstractFacade<Redevable>{
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
 //      return reloaded(query);
 //    }
-    }
+//}
