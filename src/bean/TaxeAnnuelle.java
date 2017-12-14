@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -29,9 +30,12 @@ public class TaxeAnnuelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   
     private int annee;
+   private BigDecimal montant; 
     
+   @OneToOne
+   private Utilisateur utilisateur;
+   
      @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTaxe;
      
