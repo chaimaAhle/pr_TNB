@@ -17,7 +17,7 @@ public class UtilisateurService extends AbstractFacade<Utilisateur>{
         Utilisateur loadedUtilisateur= find(utilisateur.getMatricule());
         if(loadedUtilisateur==null){
          return -1;   
-        }else if(!loadedUtilisateur.getMotDepasse().equals(utilisateur.getMotDepasse())){
+        }else if(!loadedUtilisateur.getMotDepasse().equals(HAshageUtil.sha256utilisateur.getMotDepasse())){
             return -2;
         }else{
             return 1;
@@ -38,6 +38,7 @@ public class UtilisateurService extends AbstractFacade<Utilisateur>{
         }else if (prenom==null){
             return -4;
         }else{
+            
             Utilisateur utilisateur= new Utilisateur(matricule, motDePasse, nom, prenom);
             create(utilisateur);
             return 1;
