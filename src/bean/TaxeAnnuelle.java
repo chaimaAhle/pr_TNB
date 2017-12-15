@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import java.util.Objects;
 import javax.persistence.Entity;
@@ -18,7 +19,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class TaxeAnnuelle implements Serializable {
@@ -29,9 +30,12 @@ public class TaxeAnnuelle implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-   
     private int annee;
+   private BigDecimal montant; 
     
+   @OneToOne
+   private Utilisateur utilisateur;
+   
      @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTaxe;
      
@@ -48,6 +52,7 @@ public class TaxeAnnuelle implements Serializable {
     @OneToOne
     private  TauxRetard tauxRetard;
 
+    
     
     
     
@@ -131,6 +136,26 @@ public class TaxeAnnuelle implements Serializable {
     public void setTauxRetard(TauxRetard tauxRetard) {
         this.tauxRetard = tauxRetard;
     }
+
+    public BigDecimal getMontant() {
+        return montant;
+    }
+
+    public void setMontant(BigDecimal montant) {
+        this.montant = montant;
+    }
+
+    public Utilisateur getUtilisateur() {
+        if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+    
 
     @Override
     public int hashCode() {

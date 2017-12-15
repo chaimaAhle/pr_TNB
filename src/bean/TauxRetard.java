@@ -16,7 +16,7 @@ import javax.persistence.Temporal;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class TauxRetard implements Serializable {
@@ -29,7 +29,8 @@ public class TauxRetard implements Serializable {
     private double penalite;
     private double pourcentagePremierMois;
     private double pourcentageAutreMois;
-
+    @OneToOne
+    private Utilisateur utilisateur;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApplication;
     
@@ -101,6 +102,17 @@ public class TauxRetard implements Serializable {
 
     public void setDateApplication(Date dateApplication) {
         this.dateApplication = dateApplication;
+    }
+
+    public Utilisateur getUtilisateur() { 
+        if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     

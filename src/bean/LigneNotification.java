@@ -12,10 +12,11 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class LigneNotification implements Serializable {
@@ -30,6 +31,8 @@ public class LigneNotification implements Serializable {
     private int nombreMoisRetard;
     
     private  float montantRetard;
+    @OneToOne
+    private Utilisateur utilisateur;
     
     @ManyToOne
     private Notification notification;
@@ -94,6 +97,17 @@ public class LigneNotification implements Serializable {
 
     public void setNotification(Notification notification) {
         this.notification = notification;
+    }
+
+    public Utilisateur getUtilisateur() {
+        if(utilisateur==null){
+            utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     @Override

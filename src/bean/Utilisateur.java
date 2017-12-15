@@ -14,18 +14,19 @@ import javax.persistence.Id;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 @Entity
 public class Utilisateur implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-     private String matricule;//login
+    private String matricule;//login
     private String motDepasse;
     private String nom;
     private String prenom;
-    
+    private boolean isAdmin;
+
     public Utilisateur() {
     }
 
@@ -106,6 +107,5 @@ public class Utilisateur implements Serializable {
     public String toString() {
         return "utilisateur{" + "matricule=" + matricule + ", motDepasse=" + motDepasse + ", nom=" + nom + ", prenom=" + prenom + '}';
     }
-  
-    
+
 }

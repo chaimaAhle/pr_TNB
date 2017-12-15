@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class UtilisateurServiceTest {
     
@@ -54,6 +54,7 @@ public class UtilisateurServiceTest {
         int result = instance.ajouter(matricule, motDepasse, nom, prenom);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }

@@ -12,10 +12,10 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class AbstractFacade<T> {
-    private static final String PERSISTENCE_UNIT_NAME = "tnbPU";
+    private static final String PERSISTENCE_UNIT_NAME = "tnb_base";
     private Class<T> entityClass;
     private EntityManager em;
 

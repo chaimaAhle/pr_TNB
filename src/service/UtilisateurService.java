@@ -9,7 +9,7 @@ import bean.Utilisateur;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class UtilisateurService extends AbstractFacade<Utilisateur>{
     

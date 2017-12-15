@@ -14,7 +14,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author simob
+ * @author Aniela
  */
 public class RedevableServiceTest {
     
@@ -43,18 +43,19 @@ public class RedevableServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        String cin = "EE793372";
-        String nom = "BENMANSOUR";
-        String prenom = "MOHAMMED";
-        char sexe = 'M';
-        String adresse = "AZERTYUIOP";
+        String cin = "";
+        String nom = "";
+        String prenom = "";
+        char sexe = ' ';
+        String adresse = "";
         Long numTel = null;
         Long codePost = null;
         RedevableService instance = new RedevableService();
-        int expResult = 1;
+        int expResult = 0;
         int result = instance.ajouter(cin, nom, prenom, sexe, adresse, numTel, codePost);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
+        fail("The test case is a prototype.");
     }
     
 }
