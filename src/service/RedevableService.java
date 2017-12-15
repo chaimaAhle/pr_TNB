@@ -16,7 +16,7 @@ public class RedevableService extends AbstractFacade<Redevable>{
     SearchUtil serchUtil=new SearchUtil();
     public RedevableService() {
         super(Redevable.class);
-        
+     
     }
     public int ajouter(String cin,String nom,String prenom,char sexe,String adresse,Long numTel,Long codePost){
        if(cin==null){
