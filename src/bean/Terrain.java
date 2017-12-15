@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -32,6 +33,9 @@ public class Terrain implements Serializable {
     private String ville;
     private String ZoneGeo;
     private double surface;
+    @OneToOne
+    private Utilisateur utilisateur;
+    
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateAchat;
     @ManyToOne
@@ -134,6 +138,17 @@ public class Terrain implements Serializable {
 
     public void setNotifications(List<Notification> notifications) {
         this.notifications = notifications;
+    }
+
+    public Utilisateur getUtilisateur() {
+         if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     @Override

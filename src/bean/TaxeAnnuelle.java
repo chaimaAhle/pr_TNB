@@ -137,6 +137,26 @@ public class TaxeAnnuelle implements Serializable {
         this.tauxRetard = tauxRetard;
     }
 
+    public BigDecimal getMontant() {
+        return montant;
+    }
+
+    public void setMontant(BigDecimal montant) {
+        this.montant = montant;
+    }
+
+    public Utilisateur getUtilisateur() {
+        if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+    
+
     @Override
     public int hashCode() {
         int hash = 7;

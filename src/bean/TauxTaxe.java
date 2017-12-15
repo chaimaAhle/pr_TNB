@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Objects;
@@ -39,7 +40,8 @@ public class TauxTaxe implements Serializable {
     
     @OneToMany(mappedBy = "tauxTaxe")
     private List<TaxeAnnuelle> taxeAnnuelles;
-    
+    @OneToOne
+    private Utilisateur utilisateur;
 
     public TauxTaxe() {
     }
@@ -86,6 +88,28 @@ public class TauxTaxe implements Serializable {
 
     public void setDateApplication(Date dateApplication) {
         this.dateApplication = dateApplication;
+    }
+
+    public Utilisateur getUtilisateur() {
+        if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
+    }
+
+    public List<TaxeAnnuelle> getTaxeAnnuelles() {
+        if(taxeAnnuelles==null){
+            taxeAnnuelles=new ArrayList<>();
+        }
+        return taxeAnnuelles;
+    }
+
+    public void setTaxeAnnuelles(List<TaxeAnnuelle> taxeAnnuelles) {
+        this.taxeAnnuelles = taxeAnnuelles;
     }
 
     

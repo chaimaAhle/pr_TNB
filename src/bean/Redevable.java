@@ -5,6 +5,7 @@
  */
 package bean;
 
+import static bean.Terrain_.utilisateur;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,6 +13,7 @@ import java.util.Objects;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -36,6 +38,9 @@ public class Redevable implements Serializable {
     private Long   numTel;
     
     private Long   codePost;
+    
+    @OneToOne
+    private Utilisateur Utilisateur;
     
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;
@@ -128,6 +133,17 @@ public class Redevable implements Serializable {
             List<Terrain> terrains=new ArrayList<>();
         }
         return terrains;
+    }
+
+    public Utilisateur getUtilisateur() { 
+        if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return Utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur Utilisateur) {
+        this.Utilisateur = Utilisateur;
     }
 
     

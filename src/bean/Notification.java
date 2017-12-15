@@ -16,6 +16,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 
 /**
@@ -35,7 +36,8 @@ public class Notification implements Serializable {
     private float  montantEstime;
     
     private int annee;
-    
+    @OneToOne
+    private Utilisateur utilisateur;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateEnvoi;
     
@@ -132,6 +134,17 @@ public class Notification implements Serializable {
 
     public void setLigneNotifications(List<LigneNotification> ligneNotifications) {
         this.ligneNotifications = ligneNotifications;
+    }
+
+    public Utilisateur getUtilisateur() {
+         if(utilisateur==null){
+            Utilisateur utilisateur=new Utilisateur();
+        }
+        return utilisateur;
+    }
+
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     
