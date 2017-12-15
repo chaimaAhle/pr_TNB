@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 
 /**
  *
- * @author Aniela
+ * @author simob
  */
 public class UtilisateurServiceTest {
     
@@ -41,20 +41,46 @@ public class UtilisateurServiceTest {
     /**
      * Test of seConnecter method, of class UtilisateurService.
      */
-   
+//    @Test
+//    public void testSeConnecter() {
+//        System.out.println("seConnecter");
+//        Utilisateur utilisateur = null;
+//        UtilisateurService instance = new UtilisateurService();
+//        int expResult = 0;
+//        int result = instance.seConnecter(utilisateur);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+
+    /**
+     * Test of create method, of class UtilisateurService.
+     */
+//    @Test
+//    public void testCreate() {
+//        System.out.println("create");
+//        Utilisateur utilisateur = null;
+//        UtilisateurService instance = new UtilisateurService();
+//        instance.create(utilisateur);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+
+    /**
+     * Test of ajouter method, of class UtilisateurService.
+     */
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        String matricule = "13089122";
-        String motDepasse = "EE793372";
-        String nom = "BENMANSOUR";
-        String prenom = "MOHAMMED";
+        String matricule = "aniela";
+        String motDePasse = "aniela";
+        String nom = "chaima";
+        String prenom = "sakura";
         UtilisateurService instance = new UtilisateurService();
-        int expResult = 1;
-        int result = instance.ajouter(matricule, motDepasse, nom, prenom);
+        int expResult = 0;
+        int result = instance.ajouter(matricule, motDePasse, nom, prenom);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+        }
     
 }

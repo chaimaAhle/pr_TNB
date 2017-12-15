@@ -6,6 +6,7 @@
 package service;
 
 import bean.Utilisateur;
+import util.HashageUtil;
 
 /**
  *
@@ -18,13 +19,20 @@ public class UtilisateurService extends AbstractFacade<Utilisateur>{
         if(loadedUtilisateur==null){
          return -1;   
         }
-      /*  else if(!loadedUtilisateur.getMotDepasse().equals(HAshageUtil.sha256utilisateur.getMotDepasse())){
+        else if(!loadedUtilisateur.getMotDepasse().equals(HashageUtil.sha256(utilisateur.getMotDepasse()))){
             return -2;
         }
-        */else{
+      else{
             return 1;
         }
     }
+    
+    @Override
+    public void create(Utilisateur utilisateur){
+        utilisateur.setMotDepasse(HashageUtil.sha256(utilisateur.getMotDepasse()));
+        super.create(utilisateur);
+    }
+    
     
     public UtilisateurService() {
         super(Utilisateur.class);

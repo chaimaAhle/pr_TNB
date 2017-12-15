@@ -78,6 +78,16 @@ public class Utilisateur implements Serializable {
         this.prenom = prenom;
     }
 
+    public boolean isIsAdmin() {
+        return isAdmin;
+    }
+
+    public void setIsAdmin(boolean isAdmin) {
+        this.isAdmin = isAdmin;
+    }
+
+    
+    
     @Override
     public int hashCode() {
         int hash = 3;
