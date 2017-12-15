@@ -28,6 +28,7 @@ public class CategorieTerrain implements Serializable {
     private Long id;
     
     private String nom;
+    @OneToOne
     private Utilisateur utilisateur;
      @OneToMany(mappedBy = "categorieTerrain")
     private List<Terrain> terrains;
