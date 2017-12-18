@@ -55,7 +55,7 @@ public class Terrain implements Serializable {
         this.numeroLot = numeroLot;
     }
 
-    public Terrain(String ville, String ZoneGeo, double surface) {
+    public Terrain(String ville, String ZoneGeo, BigDecimal surface) {
         this.ville = ville;
         this.ZoneGeo = ZoneGeo;
         this.surface = surface;
@@ -85,11 +85,11 @@ public class Terrain implements Serializable {
         this.ZoneGeo = ZoneGeo;
     }
 
-    public double getSurface() {
+    public BigDecimal getSurface() {
         return surface;
     }
 
-    public void setSurface(double surface) {
+    public void setSurface(BigDecimal surface) {
         this.surface = surface;
     }
 

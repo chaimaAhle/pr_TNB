@@ -63,6 +63,4 @@ public class TauxTaxeService extends AbstractFacade<TauxTaxe> {
             }
         }
     }
-
-    
 }

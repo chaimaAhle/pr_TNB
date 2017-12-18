@@ -73,16 +73,6 @@ public class CategorieTerrain implements Serializable {
         this.terrains = terrains;
     }
 
-    public TauxTaxe getTauxTaxe() {
-        if(tauxTaxe==null)
-                tauxTaxe= new TauxTaxe();
-        return tauxTaxe;
-    }
-
-    public void setTauxTaxe(TauxTaxe tauxTaxe) {
-        this.tauxTaxe = tauxTaxe;
-    }
-
     public Utilisateur getUtilisateur() { 
         if(utilisateur==null){
             utilisateur=new Utilisateur();
