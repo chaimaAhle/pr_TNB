@@ -8,6 +8,7 @@ package service;
 import bean.CategorieTerrain;
 import bean.Redevable;
 import bean.Terrain;
+import java.math.BigDecimal;
 import java.util.Date;
 
 /**
@@ -20,7 +21,7 @@ public class TerrainService extends AbstractFacade<Terrain>{
         super(Terrain.class);
     }
     RedevableService redevableService= new RedevableService();
-    public int ajouter(String ville,String ZoneGeo,double surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
+    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
        if(ville==null){
             return -1;
         }else if(ZoneGeo==null){
