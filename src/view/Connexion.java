@@ -7,7 +7,9 @@ package view;
 
 import bean.Utilisateur;
 import javax.swing.JOptionPane;
+import static javax.swing.JOptionPane.showMessageDialog;
 import service.UtilisateurService;
+import util.Session;
 
 /**
  *
@@ -142,7 +144,9 @@ public class Connexion extends javax.swing.JFrame {
         Utilisateur utilisateur= getParam();
         int res=utilisateurService.seConnecter(utilisateur);
         if(res==1){
+            Session.updateAttribute(utilisateur,"connectedUser");
             JOptionPane.showMessageDialog(null, "connection avec succes- Bienvenue"+utilisateur.getMatricule(), "INFO", JOptionPane.INFORMATION_MESSAGE);
+            new Menu().setVisible(true);
         }else{
             JOptionPane.showMessageDialog(null, "connection echouée", "ERROR", JOptionPane.ERROR_MESSAGE);
         }

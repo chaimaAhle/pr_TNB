@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -33,7 +34,7 @@ public class TauxTaxe implements Serializable {
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApplication;
     
-    private double tauxTaxe;
+    private BigDecimal taux;
     
     @OneToOne
     private CategorieTerrain categorieTerrain;
@@ -46,12 +47,8 @@ public class TauxTaxe implements Serializable {
     public TauxTaxe() {
     }
 
-    public TauxTaxe(Long id) {
-        this.id = id;
-    }
-
-    public TauxTaxe(double tauxTaxe, int categorieHabitation) {
-        this.tauxTaxe = tauxTaxe;
+    public TauxTaxe(BigDecimal tauxTaxe) {
+        this.taux = tauxTaxe;
     }
 
     public Long getId() {
@@ -62,14 +59,16 @@ public class TauxTaxe implements Serializable {
         this.id = id;
     }
 
-    public double getTauxTaxe() {
-        return tauxTaxe;
+    public BigDecimal getTaux() {
+        return taux;
     }
 
-    public void setTauxTaxe(double tauxTaxe) {
-       //if(tauxTaxe>0 && tauxTaxe<1)
-        this.tauxTaxe = tauxTaxe;
+    public void setTaux(BigDecimal taux) {
+        this.taux = taux;
     }
+
+
+    
 
     public CategorieTerrain getCategorieTerrain() {
         if(categorieTerrain==null){
@@ -141,10 +140,7 @@ public class TauxTaxe implements Serializable {
 
     
     
-    @Override
-    public String toString() {
-        return "TauxTaxe{" + "id=" + id + ", tauxTaxe=" + tauxTaxe + '}';
-    }
+ 
 
     
    

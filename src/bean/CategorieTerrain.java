@@ -26,15 +26,13 @@ public class CategorieTerrain implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
     private String nom;
     @OneToOne
     private Utilisateur utilisateur;
-     @OneToMany(mappedBy = "categorieTerrain")
+    @OneToMany(mappedBy = "categorieTerrain")
     private List<Terrain> terrains;
 
-    @OneToOne(mappedBy = "categorieTerrain")
-    private TauxTaxe tauxTaxe;
+    
 
     public CategorieTerrain() {
     }

@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -29,10 +30,10 @@ public class Terrain implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long   numeroLot;
+    private Long numeroLot;
     private String ville;
     private String ZoneGeo;
-    private double surface;
+    private BigDecimal surface;
     @OneToOne
     private Utilisateur utilisateur;
     
