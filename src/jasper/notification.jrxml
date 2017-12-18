@@ -1,29 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE jasperReport PUBLIC "-//JasperReports//DTD JasperReport//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
-
-<jasperReport name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-    <background>
-        <band/>
-    </background>
-    <title>
-        <band height="79"/>
-    </title>
-    <pageHeader>
-        <band height="35"/>
-    </pageHeader>
-    <columnHeader>
-        <band height="61"/>
-    </columnHeader>
-    <detail>
-        <band height="125"/>
-    </detail>
-    <columnFooter>
-        <band height="45"/>
-    </columnFooter>
-    <pageFooter>
-        <band height="54"/>
-    </pageFooter>
-    <summary>
-        <band height="42"/>
-    </summary>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f0b27053-c28a-457c-8736-22dda197760b">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<subDataset name="dataset1" uuid="39cc34f8-3b53-49c6-8b5d-fab8e8e303a6"/>
+	<parameter name="numeroLot" class="java.lang.String"/>
+	<parameter name="ville" class="java.lang.String"/>
+	<parameter name="ZoneGeo" class="java.lang.String"/>
+	<parameter name="surface" class="java.lang.String"/>
+	<parameter name="dateAchat" class="java.lang.String"/>
+	<parameter name="categorieTerrain" class="java.lang.String"/>
+	<parameter name="cin" class="java.lang.String"/>
+	<parameter name="nom" class="java.lang.String"/>
+	<parameter name="prenom" class="java.lang.String"/>
+	<parameter name="adresse" class="java.lang.String"/>
+	<parameter name="codePostal" class="java.lang.String"/>
+	<parameter name="sexe" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<textField>
+				<reportElement x="148" y="12" width="229" height="53" uuid="fef4b0ae-6871-4021-85db-905f05f0842c"/>
+				<textElement>
+					<font fontName="Book Antiqua" size="36"/>
+				</textElement>
+				<textFieldExpression><![CDATA[Bultin de paie]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="94" splitType="Stretch">
+			<textField>
+				<reportElement x="35" y="37" width="74" height="20" uuid="a3e2ecbc-1847-4c86-9be3-2a041efb5e19"/>
+				<textFieldExpression><![CDATA[$P{numeroLot}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="37" width="35" height="20" uuid="c8176dc1-2bca-4404-9962-d6adf99fae42"/>
+				<textFieldExpression><![CDATA[N* Lot]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="0" width="44" height="20" uuid="26ec0af7-194e-47a2-af7c-396735902d03"/>
+				<textFieldExpression><![CDATA[$P{nom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="0" width="55" height="20" uuid="b8932981-668b-4019-8a82-9dae55f79f9a"/>
+				<textFieldExpression><![CDATA[Redevable]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="167" y="0" width="100" height="20" uuid="0b462ede-99d1-436f-a201-47d5366f03c5"/>
+				<textFieldExpression><![CDATA[$P{prenom}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="37" width="100" height="20" uuid="c92cfdb6-446e-4aff-98b1-89ca884c718d"/>
+				<textFieldExpression><![CDATA[$P{categorieTerrain}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="161" y="37" width="106" height="20" uuid="4c8842c2-cc82-43f5-a5e9-724d71bd7778"/>
+				<textFieldExpression><![CDATA[Categorie d'habitation]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="463" y="37" width="66" height="20" uuid="e9ccd53a-790e-4f1f-bf12-38b393ed212c"/>
+				<textFieldExpression><![CDATA[$P{ZoneGeo}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="413" y="37" width="50" height="20" uuid="4324a262-5d03-4b04-8634-4bf2d7f1b29b"/>
+				<textFieldExpression><![CDATA[Zone Geo]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="267" y="67" width="53" height="20" uuid="63c5c8a4-5a80-4e50-a2c5-9e64aba0eaad"/>
+				<textFieldExpression><![CDATA[$P{surface}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="209" y="67" width="58" height="20" uuid="50736260-a040-4fcc-b9c3-b4aa1287533c"/>
+				<textFieldExpression><![CDATA[Surface]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="426" y="67" width="105" height="20" uuid="f92383f8-17fc-48c2-8e64-f0a46d8d7bd7"/>
+				<textFieldExpression><![CDATA[$P{adresse}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="367" y="67" width="59" height="20" uuid="8ddf124f-86a8-489a-928a-ebe1699370f9"/>
+				<textFieldExpression><![CDATA[Adresse]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="74" y="67" width="74" height="20" uuid="312790de-ac01-4964-8b46-b4435fec660a"/>
+				<textFieldExpression><![CDATA[$P{dateAchat}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="0" y="67" width="74" height="20" uuid="63606aa0-9cba-4ea9-a303-878bd2eaa875"/>
+				<textFieldExpression><![CDATA[Date d'achat]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="431" y="0" width="100" height="20" uuid="4b17436b-e8b6-483e-b360-8c67e20f745c"/>
+				<textFieldExpression><![CDATA[$P{codePostal}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="331" y="0" width="100" height="20" uuid="cfe41e23-5053-4dbd-a48d-169f4b8fa0e8"/>
+				<textFieldExpression><![CDATA[Code Poste]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="67" y="0" width="42" height="20" uuid="e2ad38ce-c057-4ec4-9302-b6fdce1fa642"/>
+				<textFieldExpression><![CDATA[$P{sexe}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Prevent"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
 </jasperReport>
