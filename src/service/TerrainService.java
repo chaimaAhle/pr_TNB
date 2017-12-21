@@ -9,7 +9,6 @@ import bean.CategorieTerrain;
 import bean.Redevable;
 import bean.Terrain;
 import java.math.BigDecimal;
-import java.math.BigInteger;
 import java.util.Date;
 
 /**
@@ -41,5 +40,7 @@ public class TerrainService extends AbstractFacade<Terrain>{
             return 1;
         }
     }
-    
+//    public int modify(String cneRedevable){
+      
+//    }
 }

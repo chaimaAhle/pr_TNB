@@ -72,7 +72,7 @@ public class CategorieTerrain implements Serializable {
     public void setTerrains(List<Terrain> terrains) {
         this.terrains = terrains;
     }
-
+    
     public Utilisateur getUtilisateur() { 
         if(utilisateur==null){
             utilisateur=new Utilisateur();
