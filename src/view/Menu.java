@@ -9,12 +9,14 @@ import bean.Utilisateur;
 import service.UtilisateurService;
 import util.Session;
 
+
 /**
  *
  * @author simob
  */
 public class Menu extends javax.swing.JFrame {
     UtilisateurService utilisateurService=new UtilisateurService();
+    
     /**
      * Creates new form Menu
      */

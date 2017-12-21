@@ -5,12 +5,16 @@
  */
 package view;
 
+import service.CategorieTerrainService;
+
+
+
 /**
  *
  * @author Aniela
  */
 public class creeation_Terrain extends javax.swing.JFrame {
-
+    CategorieTerrainService categorieTerrainService=new CategorieTerrainService();
     /**
      * Creates new form creeation_Terrain
      */
