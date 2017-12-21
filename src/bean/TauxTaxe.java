@@ -50,7 +50,7 @@ public class TauxTaxe implements Serializable {
     public TauxTaxe(BigDecimal tauxTaxe) {
         this.taux = tauxTaxe;
     }
-
+    
     public Long getId() {
         return id;
     }
