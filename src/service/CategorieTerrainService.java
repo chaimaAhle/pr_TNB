@@ -13,7 +13,7 @@ import util.Session;
  *
  * @author simob
  */
-class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
+public class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
     
     public CategorieTerrainService() {
         super(CategorieTerrain.class);
