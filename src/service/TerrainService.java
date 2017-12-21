@@ -15,32 +15,57 @@ import java.util.Date;
  *
  * @author simob
  */
-public class TerrainService extends AbstractFacade<Terrain>{
-    
+public class TerrainService extends AbstractFacade<Terrain> {
+
     public TerrainService() {
         super(Terrain.class);
     }
-    RedevableService redevableService= new RedevableService();
-    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
-       if(ville==null){
-            return -1;
-        }else if(ZoneGeo==null){
+    RedevableService redevableService = new RedevableService();
+//    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
+
+    public int ajouter(Terrain terrain) {
+       if(find(terrain.getNumeroLot())==null){
+           return -1;
+       }
+        if (terrain == null||terrain.getRedevable()==null) {
             return -2;
-            
-        }else if (surface.compareTo(new BigDecimal(100))<0 ){
-            return -3;
-        }else if(categorieTerrain==null){
-            return -2;
-        }else{
-            Terrain terrain= new Terrain(ville, ZoneGeo, surface);
-            terrain.setCategorieTerrain(categorieTerrain);
-            terrain.setDateAchat(dateAchat);
-            terrain.setRedevable(redevableService.find(cneRedevable));
-            create(terrain);
-            return 1;
+        } else {
+            if (terrain.getVille() == null) {
+                return -3;
+            } else if (terrain.getZoneGeo() == null) {
+                return -4;
+
+            } else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0) {
+                return -5;
+            } else if (terrain.getCategorieTerrain() == null) {
+                return -6;
+            } else {
+                create(terrain);
+                return 1;
+            }
         }
     }
-//    public int modify(String cneRedevable){
-      
-//    }
+    
+ public int modify(Terrain terrain){
+   if(terrain.getNumeroLot()==null){
+           return -1;
+            }else if (terrain.getVille() == null) {
+                return -2;
+            } else if (terrain.getZoneGeo() == null) {
+                return -3;
+
+            } else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0||terrain.getSurface()==null) {
+                return -4;
+            } else if (terrain.getCategorieTerrain() == null) {
+                return -5;
+            }else{
+                edit(terrain);
+                return 1;
+            }
+}
+    @Override
+ public void remove(Terrain terrain){
+     super.remove(terrain);
+ }
+ 
 }

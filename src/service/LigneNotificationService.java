@@ -21,4 +21,6 @@ public class LigneNotificationService extends AbstractFacade<LigneNotification>{
         create(ligneNotification);
         return 1;
     }
+//    public int modify(){
+        
 }

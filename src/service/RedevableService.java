@@ -18,19 +18,18 @@ public class RedevableService extends AbstractFacade<Redevable>{
         super(Redevable.class);
      
     }
-    public int ajouter(String cin,String nom,String prenom,char sexe,String adresse,Long numTel,Long codePost){
-       if(cin==null){
+    public int ajouter(Redevable redevable){
+        if(redevable.getCin()==null){
             return -1;
-        }else if(adresse==null){
+        }else if(redevable.getAdresse()==null){
             return -2;
-        }else if(numTel==null){
+        }else if(redevable.getNumTel()==null){
             return -3;
-        }else if (prenom==null){
+        }else if (redevable.getNom()==null){
             return -4;
-        }else if (codePost==null){
+        }else if (redevable.getCodePost()==null){
             return -4;
         }else{
-             Redevable redevable=new Redevable(cin, nom, prenom, sexe, adresse, numTel, codePost);
             create(redevable);
             return 1;
         }
