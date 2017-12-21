@@ -29,7 +29,7 @@ public class Terrain implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+
     private Long numeroLot;
     private String ville;
     private String ZoneGeo;
@@ -56,6 +56,13 @@ public class Terrain implements Serializable {
     }
 
     public Terrain(String ville, String ZoneGeo, BigDecimal surface) {
+        this.ville = ville;
+        this.ZoneGeo = ZoneGeo;
+        this.surface = surface;
+    }
+
+    public Terrain(Long numeroLot, String ville, String ZoneGeo, BigDecimal surface) {
+        this.numeroLot = numeroLot;
         this.ville = ville;
         this.ZoneGeo = ZoneGeo;
         this.surface = surface;

@@ -34,12 +34,15 @@ public class Utilisateur implements Serializable {
         this.matricule = matricule;
     }
 
-    public Utilisateur(String matricule, String motDepasse, String nom, String prenom) {
+    public Utilisateur(String matricule, String motDepasse, String nom, String prenom, boolean isAdmin) {
         this.matricule = matricule;
         this.motDepasse = motDepasse;
         this.nom = nom;
         this.prenom = prenom;
+        this.isAdmin = isAdmin;
     }
+
+  
 
     public Utilisateur(String matricule, String motDepasse) {
         this.matricule = matricule;

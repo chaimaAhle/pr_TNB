@@ -14,7 +14,7 @@ import util.Session;
  * @author simob
  */
 public class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
-    
+    Utilisateur utilisateur=new Utilisateur();
     public CategorieTerrainService() {
         super(CategorieTerrain.class);
     }
@@ -29,4 +29,21 @@ public class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
             return 1;
         }
     }
+    
+    public int modify(CategorieTerrain categorieTerrain){
+        if(utilisateur.isIsAdmin()==false){
+            return -1;
+        }else{
+            edit(categorieTerrain);
+            return 1;
+        }    
+    }  
+    
+//    public int remove(CategorieTerrain categorieTerrain){
+//        if(!find(categorieTerrain.getId()).getTerrains().isEmpty()){
+//            
+//        }
+//              
+//        super.remove(categorieTerrain);
+//    }
 }
