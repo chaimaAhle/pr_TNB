@@ -307,7 +307,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
     }//GEN-LAST:event_jFormattedTextField1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-      terrainService.ajouter(new String(villeField),new String(ZoneField),new BigDecimal(surfaceField),new String(), new Date(dateAchatField),new String(cinField));
+//      terrainService.ajouter(new String(villeField),new String(ZoneField),new BigDecimal(surfaceField),new String(), new Date(dateAchatField),new String(cinField));
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
