@@ -6,18 +6,23 @@
 package view;
 
 import bean.CategorieTerrain;
+import bean.Redevable;
+import bean.Terrain;
 import java.math.BigDecimal;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-import service.TerrainService;
+import javax.swing.JOptionPane;
 import service.CategorieTerrainService;
+import service.RedevableService;
+import service.TerrainService;
 /**
  *
  * @author Aniela
  */
 public class creeation_Terrain extends javax.swing.JFrame {
 CategorieTerrainService categorieTerrainService= new CategorieTerrainService();
+    RedevableService redevableService= new RedevableService();
+    TerrainService terrainService=new TerrainService();
 List<CategorieTerrain>categTers=new ArrayList<>();
     @Override
     public void list() {
@@ -40,7 +45,17 @@ List<CategorieTerrain>categTers=new ArrayList<>();
             jComboBox2.addItem(item.getNom());
         }      }
     
-    
+    private Terrain getParam(){
+        Terrain terrain = new Terrain();
+        terrain.setNumeroLot(new Long(jTextField4.getText()));
+        terrain.setSurface(new BigDecimal(jTextField3.getText()));
+        terrain.setVille(jTextField6.getText());
+        terrain.setVille(jTextField5.getText());
+        terrain.setRedevable(redevableService.find(jTextField1.getText()));
+        terrain.setCategorieTerrain((CategorieTerrain)jComboBox2.getSelectedItem());
+        terrain.setDateAchat(jCalendar1.getDate());
+       return terrain;
+    } 
     
     
     
@@ -62,7 +77,6 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         jLabel5 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
         jButton1 = new javax.swing.JButton();
         jComboBox2 = new javax.swing.JComboBox<>();
         jTextField4 = new javax.swing.JTextField();
@@ -71,6 +85,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         jLabel8 = new javax.swing.JLabel();
         jTextField6 = new javax.swing.JTextField();
         button1 = new java.awt.Button();
+        jCalendar1 = new com.toedter.calendar.JCalendar();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -111,14 +126,6 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         jLabel6.setForeground(new java.awt.Color(0, 102, 51));
         jLabel6.setText("Date d'achat");
 
-        jFormattedTextField1.setText("dateAchatField");
-        jFormattedTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jFormattedTextField1ActionPerformed(evt);
-            }
-        });
-
-        jButton1.setForeground(new java.awt.Color(0, 0, 0));
         jButton1.setText("valide");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -197,12 +204,10 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                                     .addGap(109, 109, 109))
                                 .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                     .addContainerGap()
-                                    .addComponent(jLabel4)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel6)
+                                        .addComponent(jLabel4))
                                     .addGap(87, 87, 87)))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(97, 97, 97)
-                                .addComponent(jLabel6)
-                                .addGap(51, 51, 51))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -222,11 +227,11 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                                 .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(4, 4, 4)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap(401, Short.MAX_VALUE))
+                            .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(244, 244, 244)
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(252, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -235,7 +240,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 17, Short.MAX_VALUE)
+                        .addGap(0, 22, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -250,7 +255,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 10, Short.MAX_VALUE))
+                        .addGap(0, 44, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel8)
@@ -260,24 +265,23 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel7))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
+                .addGap(37, 37, 37)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel4))
+                        .addComponent(jCalendar1, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                                .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(63, 63, 63)
+                                .addGap(0, 44, Short.MAX_VALUE)
                                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(47, 47, 47)
-                                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jButton1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jButton1)))
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -302,12 +306,22 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jFormattedTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jFormattedTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-//      terrainService.ajouter(new String(villeField),new String(ZoneField),new BigDecimal(surfaceField),new String(), new Date(dateAchatField),new String(cinField));
+        Terrain terrain= getParam();
+        int res=terrainService.ajouter(terrain);
+        if(res==-1){
+            JOptionPane.showMessageDialog(null, "veillez entrer le numero de lot!", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==-2){
+            JOptionPane.showMessageDialog(null, "le cin correspond a un redevable inexistant!", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==-3){
+            JOptionPane.showMessageDialog(null, "veuillez entrer une ville valide ", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==-4){
+            JOptionPane.showMessageDialog(null, "veuillez entrer une zone valide", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==-5){
+            JOptionPane.showMessageDialog(null, "veillez entrer une surface valide", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==-6){
+            JOptionPane.showMessageDialog(null, "veillez choisir une categorie", "error", JOptionPane.ERROR_MESSAGE);
+        }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -377,8 +391,8 @@ List<CategorieTerrain>categTers=new ArrayList<>();
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private javax.swing.JButton jButton1;
+    private com.toedter.calendar.JCalendar jCalendar1;
     private javax.swing.JComboBox<String> jComboBox2;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
