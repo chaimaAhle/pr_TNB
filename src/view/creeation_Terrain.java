@@ -240,7 +240,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 17, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(0, 22, Short.MAX_VALUE)
+                        .addGap(0, 24, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -255,7 +255,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                         .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 44, Short.MAX_VALUE))
+                        .addGap(0, 48, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(14, 14, 14)
                         .addComponent(jLabel8)
@@ -276,7 +276,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(0, 44, Short.MAX_VALUE)
+                                .addGap(0, 48, Short.MAX_VALUE)
                                 .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(jButton1)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -295,10 +295,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         jPanel1.getAccessibleContext().setAccessibleName("Creation de Terrain");
@@ -321,6 +318,10 @@ List<CategorieTerrain>categTers=new ArrayList<>();
             JOptionPane.showMessageDialog(null, "veillez entrer une surface valide", "error", JOptionPane.ERROR_MESSAGE);
         }else if(res==-6){
             JOptionPane.showMessageDialog(null, "veillez choisir une categorie", "error", JOptionPane.ERROR_MESSAGE);
+        }else if(res==1){            JOptionPane.showMessageDialog(null, "veillez choisir une categorie", "error", JOptionPane.ERROR_MESSAGE);
+
+            JOptionPane.showMessageDialog(null, "ajout de terrain avec succes", "info", JOptionPane.INFORMATION_MESSAGE);
+            
         }
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
