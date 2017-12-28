@@ -63,9 +63,10 @@ public class TerrainService extends AbstractFacade<Terrain> {
                 return 1;
             }
 }
-    @Override
- public void remove(Terrain terrain){
-     super.remove(terrain);
- }
+
+//    @Override
+// public void remove(Terrain terrain){
+//     super.remove(terrain);
+// }
  
 }
