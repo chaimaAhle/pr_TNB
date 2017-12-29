@@ -66,19 +66,19 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(0, 51, 51));
         jLabel2.setText("CIN");
 
-        jTextField1.setText("jTextField1");
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Dubai", 2, 12)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 51, 51));
         jLabel1.setText("Nom");
 
-        jTextField2.setText("jTextField2");
-
         jLabel3.setFont(new java.awt.Font("Dubai", 2, 12)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(0, 51, 51));
         jLabel3.setText("Prenom");
-
-        jTextField3.setText("jTextField3");
 
         jLabel4.setFont(new java.awt.Font("Dubai", 2, 12)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(0, 51, 51));
@@ -103,11 +103,11 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
         jLabel6.setForeground(new java.awt.Color(0, 51, 51));
         jLabel6.setText("N Telephone");
 
-        jTextField4.setText("jTextField4");
-
-        jTextField5.setText("jTextField5");
-
-        jTextField6.setText("jTextField6");
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
 
         jButton1.setText("Ajouter");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -233,6 +233,14 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
