@@ -45,7 +45,7 @@ public class RedevableServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        Redevable redevable = new Redevable("EE1997","AhleTouate", "Chaima",'F',"17,Derb Sidi makhlouf Aswel Marrakech", 0624355670L, 34000L);
+        Redevable redevable = new Redevable("EE1996","ElFahimi", "Souhail",'M',"21,Dakhla","06321134","432");
         RedevableService instance = new RedevableService();
         int expResult = 1;
         int result = instance.ajouter(redevable);

@@ -32,7 +32,6 @@ public class TauxTaxeService extends AbstractFacade<TauxTaxe> {
             return -2;
         }else{
             tauxTaxe.setDateApplication(new Date());
-            
             tauxTaxe.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
             create(tauxTaxe);
                 return 1;

@@ -22,23 +22,34 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
         super(TaxeAnnuelle.class);
     }
     
-    public int payerAnnee(int indice, String cne, int annee, BigDecimal montant){
-        if (cne==null ||cne.equals("")){
-            return -1;
-        }else{
-            Redevable redevable=redevableService.find(cne);
-            if(redevable==null){
-                return -2;
-            }else{
-                Terrain terrain=redevable.getTerrains().get(indice);
-                TaxeAnnuelle taxeAnnuelle=new TaxeAnnuelle(annee);
-              //  taxeAnnuelle.setDateTaxe(new Date());
-                //taxeAnnuelle.setDatePresentaion(new Date());
-                taxeAnnuelle.setMontant(montant);
-               // taxeAnnuelle.set
-            }
-            
-        }
+    public int payerAnnee(TaxeAnnuelle taxeAnnuelle){
+   if
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+    return 1;
     }
     
 }

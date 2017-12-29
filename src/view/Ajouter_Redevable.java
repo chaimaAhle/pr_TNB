@@ -5,19 +5,40 @@
  */
 package view;
 
+import bean.Redevable;
+import bean.Utilisateur;
+import javax.swing.JOptionPane;
+import service.RedevableService;
+import util.Session;
+
 /**
  *
  * @author Aniela
  */
 public class Ajouter_Redevable extends javax.swing.JFrame {
-
+    RedevableService redevableService=new RedevableService();
     /**
      * Creates new form Ajouter_Redevable
      */
     public Ajouter_Redevable() {
         initComponents();
     }
+ private Redevable getParam() {
+        Redevable redevable = new Redevable();
+        redevable.setCin(jTextField1.getText());
+        redevable.setNom(jTextField2.getText());
+        redevable.setPrenom(jTextField3.getText());
+        if (jRadioButton1.isSelected()) {
+            redevable.setSexe('M');
+        } else if (jRadioButton2.isSelected()) {
+            redevable.setSexe('F');
+        }
+        redevable.setAdresse(jTextField4.getText());
+        redevable.setNumTel(jTextField5.getText());
+        redevable.setCodePost(jTextField6.getText());
 
+        return redevable;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -232,10 +253,40 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+         Redevable redevable = getParam();
+        redevable.setUtilisateur((Utilisateur)Session.getAttribut("connectedUser"));
+        int res = redevableService.ajouter(redevable);
+        switch (res) {
+            case 1:
+                JOptionPane.showMessageDialog(null, "operation executée avec succès", "INFO", JOptionPane.INFORMATION_MESSAGE);
+                new Menu().setVisible(true);
+                break;
+            case -1:
+                JOptionPane.showMessageDialog(null, "entrer un cin!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -2:
+                JOptionPane.showMessageDialog(null, "entrer une adresse!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -3:
+                JOptionPane.showMessageDialog(null, "entrer un numero de telephone!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -4:
+                JOptionPane.showMessageDialog(null, "entrer un nom!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -5:
+                JOptionPane.showMessageDialog(null, "entrer un prenom!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            case -6:
+                JOptionPane.showMessageDialog(null, "entrer un codePostal!", "ERROR", JOptionPane.ERROR_MESSAGE);
+                break;
+            default:
+                break;
+        }
+        new Menu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
+
     }//GEN-LAST:event_jTextField1ActionPerformed
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed

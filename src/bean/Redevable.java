@@ -35,9 +35,9 @@ public class Redevable implements Serializable {
 
     private String adresse;
     
-    private Long numTel;
+    private String numTel;
     
-    private Long   codePost;
+    private String   codePost;
     
     @OneToOne
     private Utilisateur Utilisateur;
@@ -58,7 +58,7 @@ public class Redevable implements Serializable {
         this.prenom = prenom;
     }
  
-    public Redevable(String cin, String nom, String prenom, char sexe, String adresse, Long numTel, Long codePost) {
+    public Redevable(String cin, String nom, String prenom, char sexe, String adresse, String numTel, String codePost) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -110,20 +110,20 @@ public class Redevable implements Serializable {
         this.adresse = adresse;
     }
 
-    public Long getNumTel() {
+    public String getNumTel() {
         return numTel;
     }
 
-    public void setNumTel(Long numTel) {
+    public void setNumTel(String numTel) {
         
         this.numTel = numTel;
     }
 
-    public Long getCodePost() {
+    public String getCodePost() {
         return codePost;
     }
 
-    public void setCodePost(Long codePost) {
+    public void setCodePost(String codePost) {
        
         this.codePost = codePost;
     }

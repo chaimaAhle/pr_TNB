@@ -24,7 +24,7 @@ public class TerrainService extends AbstractFacade<Terrain> {
 //    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
 
     public int ajouter(Terrain terrain) {
-       if(find(terrain.getNumeroLot())==null){
+       if(find(terrain.getNumeroLot())!=null){
            return -1;
        }
         if (terrain == null||terrain.getRedevable()==null) {
@@ -49,16 +49,22 @@ public class TerrainService extends AbstractFacade<Terrain> {
  public int modify(Terrain terrain){
    if(terrain.getNumeroLot()==null){
            return -1;
-            }else if (terrain.getVille() == null) {
+            }else if (terrain.getRedevable().getCin() == null) {
                 return -2;
-            } else if (terrain.getZoneGeo() == null) {
+            } else if (terrain.getVille() == null) {
                 return -3;
 
-            } else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0||terrain.getSurface()==null) {
+            }else if (terrain.getSurface()==null){
+                
+                
+ }else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0||terrain.getSurface()==null) {
                 return -4;
             } else if (terrain.getCategorieTerrain() == null) {
                 return -5;
-            }else{
+            }else if (terrain.getDateAchat()==null ||terrain.getDateAchat().after( new Date()) ) {
+                return -6;
+            }
+                else{
                 edit(terrain);
                 return 1;
             }

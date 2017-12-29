@@ -30,8 +30,11 @@ public class RedevableService extends AbstractFacade<Redevable> {
         }else if (redevable.getNom()==null){
             return -4;
         }else if (redevable.getCodePost()==null){
-            return -4;
-        }else{
+            return -5;
+        }else if(redevable.getPrenom()==null){
+            return -6;
+        }
+        else{
             create(redevable);
             return 1;
         }

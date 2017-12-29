@@ -63,7 +63,7 @@ public class UtilisateurServiceTest {
 //        UtilisateurService instance = new UtilisateurService();
 //        instance.create(utilisateur);
 //        // TODO review the generated test code and remove the default call to fail.
-//        fail("The test case is a prototype.");
+//       
 //    }
 
     /**
@@ -72,7 +72,7 @@ public class UtilisateurServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        Utilisateur utilisateur = new Utilisateur("simo", "simo1997", "simo","simo", false);
+        Utilisateur utilisateur = new Utilisateur("chaima", "aniela", "Ahle Touate","Chaima", true);
         UtilisateurService instance = new UtilisateurService();
         int expResult = 1;
         int result = instance.ajouter(utilisateur);

@@ -46,9 +46,10 @@ public class TerrainServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        Terrain terrain = new Terrain("00001", "Marrakech", "Medina",100 );
+        Terrain terrain = new Terrain
+        (00001L, "Marrakech", "Medina",new BigDecimal(100 ) );
         TerrainService instance = new TerrainService();
-        int expResult = 0;
+        int expResult = -1;
         int result = instance.ajouter(terrain);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
