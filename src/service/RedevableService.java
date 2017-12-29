@@ -20,18 +20,22 @@ public class RedevableService extends AbstractFacade<Redevable> {
         super(Redevable.class);
 
     }
-    public int ajouter(Redevable redevable){
-        if(redevable.getCin()==null){
+
+    public int ajouter(Redevable redevable) {
+        if (redevable.getCin() == null) {
             return -1;
-        }else if(redevable.getAdresse()==null){
+        } else if (redevable.getAdresse() == null) {
             return -2;
-        }else if(redevable.getNumTel()==null){
+        } else if (redevable.getNumTel() == null) {
             return -3;
-        }else if (redevable.getNom()==null){
+        } else if (redevable.getNom() == null) {
             return -4;
-        }else if (redevable.getCodePost()==null){
-            return -4;
-        }else{
+        } else if (redevable.getPrenom() == null) {
+            return -5;
+
+        } else if (redevable.getCodePost() == null) {
+            return -6;
+        } else {
             create(redevable);
             return 1;
         }
@@ -50,14 +54,16 @@ public class RedevableService extends AbstractFacade<Redevable> {
             return -5;
         } else if (redevable.getAdresse() == null) {
             return -6;
-        }else{
+        } else {
             edit(redevable);
             return -1;
         }
     }
-    public int supprimer(Redevable redevable){
-            
-        }
+
+    public Redevable  findByCriteria(){
+        Redevable redevable= new Redevable();
+        return redevable;
+    }
     
 //     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
 //        String query ="SELECT r from Redevable where 1=1";
@@ -68,4 +74,4 @@ public class RedevableService extends AbstractFacade<Redevable> {
 //        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
 //      return reloaded(query);
 //    }
-//}
+}
