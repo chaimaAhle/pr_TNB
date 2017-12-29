@@ -32,7 +32,6 @@ public class RedevableService extends AbstractFacade<Redevable> {
             return -4;
         } else if (redevable.getPrenom() == null) {
             return -5;
-
         } else if (redevable.getCodePost() == null) {
             return -6;
         } else {
