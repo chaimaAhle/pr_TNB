@@ -36,8 +36,7 @@ public class TauxTaxe implements Serializable {
     
     private BigDecimal taux;
     
-    @OneToOne
-    private CategorieTerrain categorieTerrain;
+    
     
     @OneToMany(mappedBy = "tauxTaxe")
     private List<TaxeAnnuelle> taxeAnnuelles;
@@ -70,16 +69,7 @@ public class TauxTaxe implements Serializable {
 
     
 
-    public CategorieTerrain getCategorieTerrain() {
-        if(categorieTerrain==null){
-            CategorieTerrain categorieTerrain=new CategorieTerrain();
-        }
-        return categorieTerrain;
-    }
-
-    public void setCategorieTerrain(CategorieTerrain categorieTerrain) {
-        this.categorieTerrain = categorieTerrain;
-    }
+    
 
     public Date getDateApplication() {
         return dateApplication;

@@ -17,4 +17,5 @@ public class TauxRetardService extends AbstractFacade<TauxRetard>{
         super(TauxRetard.class);
     }
     
+    
 }

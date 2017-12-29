@@ -59,4 +59,12 @@ public class TauxTaxeService extends AbstractFacade<TauxTaxe> {
             }
         }
     }
+    
+    public TauxTaxe findByCategorie(String nomCategorie){
+        TauxTaxe tauxTaxe=new TauxTaxe();
+        String req="SELECT tt from TauxTaxe tt where tt.categorieTerrain.nom='"+nomCategorie+"'";
+        tauxTaxe=(TauxTaxe)getEntityManager().createQuery(req).getSingleResult();
+        return tauxTaxe;
+    }
+    
 }

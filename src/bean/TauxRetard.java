@@ -6,6 +6,7 @@
 package bean;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
 import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,9 +27,9 @@ public class TauxRetard implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     
-    private double penalite;
-    private double pourcentagePremierMois;
-    private double pourcentageAutreMois;
+    private BigDecimal penalite;
+    private BigDecimal pourcentagePremierMois;
+    private BigDecimal pourcentageAutreMois;
     @OneToOne
     private Utilisateur utilisateur;
     @Temporal(javax.persistence.TemporalType.DATE)
@@ -43,7 +44,7 @@ public class TauxRetard implements Serializable {
         this.id = id;
     }
 
-    public TauxRetard(double penalite, double pourcentagePremierMois, double pourcentageAutreMois) {
+    public TauxRetard(BigDecimal penalite, BigDecimal pourcentagePremierMois, BigDecimal pourcentageAutreMois) {
         this.penalite = penalite;
         this.pourcentagePremierMois = pourcentagePremierMois;
         this.pourcentageAutreMois = pourcentageAutreMois;
@@ -70,27 +71,27 @@ public class TauxRetard implements Serializable {
         this.id = id;
     }
 
-    public double getPenalite() {
+    public BigDecimal getPenalite() {
         return penalite;
     }
 
-    public void setPenalite(double penalite) {
+    public void setPenalite(BigDecimal penalite) {
         this.penalite = penalite;
     }
 
-    public double getPourcentagePremierMois() {
+    public BigDecimal getPourcentagePremierMois() {
         return pourcentagePremierMois;
     }
 
-    public void setPourcentagePremierMois(double pourcentagePremierMois) {
+    public void setPourcentagePremierMois(BigDecimal pourcentagePremierMois) {
         this.pourcentagePremierMois = pourcentagePremierMois;
     }
 
-    public double getPourcentageAutreMois() {
+    public BigDecimal getPourcentageAutreMois() {
         return pourcentageAutreMois;
     }
 
-    public void setPourcentageAutreMois(double pourcentageAutreMois) {
+    public void setPourcentageAutreMois(BigDecimal pourcentageAutreMois) {
         this.pourcentageAutreMois = pourcentageAutreMois;
     }
 

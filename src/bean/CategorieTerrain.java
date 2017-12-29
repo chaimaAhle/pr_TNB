@@ -31,7 +31,9 @@ public class CategorieTerrain implements Serializable {
     private Utilisateur utilisateur;
     @OneToMany(mappedBy = "categorieTerrain")
     private List<Terrain> terrains;
-
+    
+    @OneToOne
+    private TauxTaxe tauxTaxe;
     
 
     public CategorieTerrain() {
@@ -63,6 +65,18 @@ public class CategorieTerrain implements Serializable {
         this.id = id;
     }
 
+    public TauxTaxe getTauxTaxe() {
+       if(tauxTaxe==null){
+          TauxTaxe tauxTaxe=new TauxTaxe();
+       }
+        return tauxTaxe;
+    }
+
+    public void setTauxTaxe(TauxTaxe tauxTaxe) {
+        this.tauxTaxe = tauxTaxe;
+    }
+
+    
     public List<Terrain> getTerrains() {
         if(terrains==null)
            terrains= new ArrayList(); 
