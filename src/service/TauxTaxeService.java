@@ -23,7 +23,7 @@ public class TauxTaxeService extends AbstractFacade<TauxTaxe> {
     public TauxTaxeService() {
         super(TauxTaxe.class);
     }
-    public int ajouterr(TauxTaxe tauxTaxe)
+    public int ajouter(TauxTaxe tauxTaxe)
      {
         if (tauxTaxe == null) {
             return -1;

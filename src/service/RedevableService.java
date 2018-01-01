@@ -6,7 +6,10 @@
 package service;
 
 import bean.Redevable;
-import controller.util.SearchUtil;
+import java.util.ArrayList;
+import java.util.List;
+import util.SearchUtil;
+import static util.SearchUtil.addConstraint;
 
 /**
  *
@@ -64,13 +67,4 @@ public class RedevableService extends AbstractFacade<Redevable> {
         return redevable;
     }
     
-//     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
-//        String query ="SELECT r from Redevable where 1=1";
-//        query+="SearchUtil.addConstraint('a', 'nbrPoint',nom)";
-//        query+="And s.addConstraint("a", "nbrPoint",sexe);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",adresse);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",numTel);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
-//      return reloaded(query);
-//    }
 }

@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package bean;
-
-import static bean.Terrain_.utilisateur;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +38,7 @@ public class Redevable implements Serializable {
     private Long codePost;
     
     @OneToOne
-    private Utilisateur Utilisateur;
+    private Utilisateur utilisateur;
     
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;
@@ -135,15 +133,15 @@ public class Redevable implements Serializable {
         return terrains;
     }
 
-    public Utilisateur getUtilisateur() { 
-        if(utilisateur==null){
+    public Utilisateur getUtilisateur() {
+         if(utilisateur==null){
             Utilisateur utilisateur=new Utilisateur();
         }
-        return Utilisateur;
+        return utilisateur;
     }
 
-    public void setUtilisateur(Utilisateur Utilisateur) {
-        this.Utilisateur = Utilisateur;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     

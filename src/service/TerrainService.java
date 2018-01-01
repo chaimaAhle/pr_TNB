@@ -5,11 +5,13 @@
  */
 package service;
 
-import bean.CategorieTerrain;
-import bean.Redevable;
 import bean.Terrain;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
+import util.SearchUtil;
+import static util.SearchUtil.addConstraint;
 
 /**
  *
@@ -63,9 +65,6 @@ public class TerrainService extends AbstractFacade<Terrain> {
                 return 1;
             }
 }
-    @Override
- public void remove(Terrain terrain){
-     super.remove(terrain);
- }
+ 
  
 }
