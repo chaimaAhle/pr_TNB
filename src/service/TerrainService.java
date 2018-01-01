@@ -65,6 +65,15 @@ public class TerrainService extends AbstractFacade<Terrain> {
                 return 1;
             }
 }
- 
+ public List<Terrain> findByCriteria(Terrain terrain,Date dateAchatMin,Date dateAchatMax,BigDecimal surfaceMin,BigDecimal surfaceMax){
+     List<Terrain> terrains=new ArrayList<>();
+     String req="SELECT t FROM Terrain t WHERE 1=1";
+     req+=addConstraint("t", "ville","=",terrain.getVille());
+     req+=addConstraint("t", "ZoneGeo","=",terrain.getZoneGeo());
+     req+=addConstraint("t", "categorieTerrain.nom","=",terrain.getCategorieTerrain().getNom());
+     req+=SearchUtil.addConstraintMinMax("t", "surface", surfaceMin, surfaceMax);
+     req+=SearchUtil.addConstraintMinMaxDate("t", "dateAchat", dateAchatMin, dateAchatMax);
+     return terrains;
+ }
  
 }
