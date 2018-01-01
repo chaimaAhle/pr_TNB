@@ -5,11 +5,13 @@
  */
 package service;
 
-import bean.CategorieTerrain;
 import bean.Redevable;
+import static bean.TaxeAnnuelle_.terrain;
 import bean.Terrain;
+import controller.util.SearchUtil;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 /**
  *
@@ -21,13 +23,12 @@ public class TerrainService extends AbstractFacade<Terrain> {
         super(Terrain.class);
     }
     RedevableService redevableService = new RedevableService();
-//    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
-
+    
     public int ajouter(Terrain terrain) {
        if(find(terrain.getNumeroLot())!=null){
            return -1;
        }
-        if (terrain == null||terrain.getRedevable()==null) {
+        if (terrain.getRedevable()==null) {
             return -2;
         } else {
             if (terrain.getVille() == null) {
@@ -63,16 +64,28 @@ public class TerrainService extends AbstractFacade<Terrain> {
                 return -5;
             }else if (terrain.getDateAchat()==null ||terrain.getDateAchat().after( new Date()) ) {
                 return -6;
-            }
-                else{
+            } else
                 edit(terrain);
                 return 1;
-            }
+     
+ }
+ public List<Terrain> findByCriteria(Terrain terrain) {
+        String requette = "SELECT t FROM Terrain t WHERE 1=1";
+         if (terrain.getNumeroLot()!=null) {
+            requette += SearchUtil.addConstraint("r", "numeroLot", "=", terrain.getNumeroLot());
+        }if (terrain.getDateAchat()!=null) {
+            requette += SearchUtil.addConstraint("r", "dateAchat", "=", terrain.getDateAchat());
+        }if (!terrain.getVille().equals("")) {
+            requette += SearchUtil.addConstraint("r", "ville", "=", terrain.getVille());
+        }if (!terrain.getZoneGeo().equals("")) {
+            requette += SearchUtil.addConstraint("r", "zoneGeo", "=", terrain.getZoneGeo());
+        }
+        System.out.println(requette);
+        return getEntityManager().createQuery(requette).getResultList();
+    }
+  
+public List<Terrain> findByRedevable(Redevable redevable) {
+      String requette = "SELECT t FROM Terrain t WHERE t.redevable.cin="+redevable.getCin();
+    return getEntityManager().createQuery(requette).getResultList();
 }
-
-//    @Override
-// public void remove(Terrain terrain){
-//     super.remove(terrain);
-// }
- 
 }

@@ -7,6 +7,7 @@ package service;
 
 import bean.Redevable;
 import controller.util.SearchUtil;
+import java.util.List;
 
 /**
  *
@@ -20,21 +21,23 @@ public class RedevableService extends AbstractFacade<Redevable> {
         super(Redevable.class);
 
     }
-    public int ajouter(Redevable redevable){
-        if(redevable.getCin()==null){
+
+    public int ajouter(Redevable redevable) {
+        if (redevable.getCin() == null) {
             return -1;
-        }else if(redevable.getAdresse()==null){
+        } else if (redevable.getAdresse() == null) {
             return -2;
-        }else if(redevable.getNumTel()==null){
+        } else if (redevable.getNumTel() == null) {
             return -3;
-        }else if (redevable.getNom()==null){
+        } else if (redevable.getNom() == null) {
             return -4;
-        }else if (redevable.getCodePost()==null){
+        } else if (redevable.getPrenom() == null) {
             return -5;
-        }else if(redevable.getPrenom()==null){
+        } else if (redevable.getCodePost() == null) {
             return -6;
-        }
-        else{
+        } else if (redevable.getSexe() == null) {
+            return -7;
+        } else {
             create(redevable);
             return 1;
         }
@@ -53,19 +56,36 @@ public class RedevableService extends AbstractFacade<Redevable> {
             return -5;
         } else if (redevable.getAdresse() == null) {
             return -6;
-        }else{
+        } else if (redevable.getSexe()== null) {
+            return -7;
+        } else {
             edit(redevable);
             return -1;
         }
     }
-}
-//     public Redevable findByCriteria(String cin, String nom,String prenom, String sexe, String adresse, Long numTel, Long codePost) {
-//        String query ="SELECT r from Redevable where 1=1";
-//        query+="SearchUtil.addConstraint('a', 'nbrPoint',nom)";
-//        query+="And s.addConstraint("a", "nbrPoint",sexe);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",adresse);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",numTel);
-//        query+=SearchUtil.addConstraint("a", "nbrPoint",codePost);
-//      return reloaded(query);
-//    }
-//}
+
+     public List<Redevable> findByCriteria(Redevable redevable) {
+        String requette = "SELECT r FROM Redevable r WHERE 1=1";
+        if (!redevable.getCin().equals("")) {
+            requette += SearchUtil.addConstraint("r", "cin", "=", redevable.getCin());
+        }
+        if (!redevable.getNom().equals("")) {
+            requette += SearchUtil.addConstraint("r", "nom", "=", redevable.getNom());
+        }
+     
+        if (!redevable.getPrenom().equals("")) {
+            requette += SearchUtil.addConstraint("r", "prenom", "=", redevable.getPrenom());
+        }
+     
+        if (!redevable.getAdresse().equals("")) {
+            requette += SearchUtil.addConstraint("r", "adresse", "=", redevable.getAdresse());
+        }
+        System.out.println(requette);
+        return getEntityManager().createQuery(requette).getResultList();
+    }
+  
+
+
+      
+    }
+

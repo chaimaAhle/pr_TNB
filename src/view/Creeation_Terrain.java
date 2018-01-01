@@ -19,7 +19,7 @@ import service.TerrainService;
  *
  * @author Aniela
  */
-public class creeation_Terrain extends javax.swing.JFrame {
+public class Creeation_Terrain extends javax.swing.JFrame {
 CategorieTerrainService categorieTerrainService= new CategorieTerrainService();
     RedevableService redevableService= new RedevableService();
     TerrainService terrainService=new TerrainService();
@@ -32,12 +32,12 @@ List<CategorieTerrain>categTers=new ArrayList<>();
      /**
      * Creates new form creeation_Terrain
      */
-    public creeation_Terrain() {
+    public Creeation_Terrain() {
         initComponents();
-     initComboBox1();
+     initComboBox2();
     }
 
-    public void initComboBox1(){
+    public void initComboBox2(){
        categTers=categorieTerrainService.findAll();
        jComboBox2.addItem("--SELECT--");
         for (int i = 0; i <categTers.size(); i++) {
@@ -47,12 +47,14 @@ List<CategorieTerrain>categTers=new ArrayList<>();
     
     private Terrain getParam(){
         Terrain terrain = new Terrain();
-        terrain.setNumeroLot(new Long(jTextField4.getText()));
+//        CategorieTerrain catTer=categorieTerrainService.findByCATByNom((String) jComboBox2.getSelectedItem());
+   CategorieTerrain catTer=categTers.get( jComboBox2.getSelectedIndex()-1);
+terrain.setNumeroLot(new Long(jTextField4.getText()));
         terrain.setSurface(new BigDecimal(jTextField3.getText()));
         terrain.setVille(jTextField6.getText());
         terrain.setVille(jTextField5.getText());
         terrain.setRedevable(redevableService.find(jTextField1.getText()));
-        terrain.setCategorieTerrain((CategorieTerrain)jComboBox2.getSelectedItem());
+        terrain.setCategorieTerrain(catTer);
         terrain.setDateAchat(jDateChooser1.getDate());
        return terrain;
     } 
@@ -361,20 +363,21 @@ List<CategorieTerrain>categTers=new ArrayList<>();
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Creeation_Terrain.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new creeation_Terrain().setVisible(true);
+                new Creeation_Terrain().setVisible(true);
             }
         });
     }

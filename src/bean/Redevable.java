@@ -31,7 +31,7 @@ public class Redevable implements Serializable {
     
     private String prenom;
 
-    private char sexe;
+    private String sexe;
 
     private String adresse;
     
@@ -57,8 +57,15 @@ public class Redevable implements Serializable {
         this.nom = nom;
         this.prenom = prenom;
     }
+
+    public Redevable(String cin, String nom, String prenom, String adresse) {
+        this.cin = cin;
+        this.nom = nom;
+        this.prenom = prenom;
+        this.adresse = adresse;
+    }
  
-    public Redevable(String cin, String nom, String prenom, char sexe, String adresse, String numTel, String codePost) {
+    public Redevable(String cin, String nom, String prenom, String sexe, String adresse, String numTel, String codePost) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -93,12 +100,11 @@ public class Redevable implements Serializable {
         this.prenom = prenom;
     }
 
-    public char getSexe() {
+    public String getSexe() {
         return sexe;
     }
 
-    public void setSexe(char sexe) {
-       
+    public void setSexe(String sexe) {
         this.sexe = sexe;
     }
 

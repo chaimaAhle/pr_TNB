@@ -32,6 +32,11 @@ public class CategorieTerrain implements Serializable {
     @OneToMany(mappedBy = "categorieTerrain")
     private List<Terrain> terrains;
 
+    public CategorieTerrain(Long id, String nom) {
+        this.id = id;
+        this.nom = nom;
+    }
+
     
 
     public CategorieTerrain() {

@@ -39,11 +39,8 @@ public class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
         }    
     }  
     
-//    public int remove(CategorieTerrain categorieTerrain){
-//        if(!find(categorieTerrain.getId()).getTerrains().isEmpty()){
-//            
-//        }
-//              
-//        super.remove(categorieTerrain);
-//    }
+public CategorieTerrain findByCATByNom(String nom) {
+      String requette = "SELECT c FROM CategorieTerrain c WHERE c.nom="+nom;
+    return (CategorieTerrain) getEntityManager().createQuery(requette).getSingleResult();
+}
 }

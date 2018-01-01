@@ -23,7 +23,7 @@ public class RedevableHelper extends AbstractHelper<Redevable> {
             new AbstractHelperItem("NOM ", "nom"),
             new AbstractHelperItem("PRENOM ", "prenom"),
             new AbstractHelperItem("SEXE ", "sexe"),
-            new AbstractHelperItem("ADRESSE ", "adress"),
+            new AbstractHelperItem("ADRESSE ", "adresse"),
             new AbstractHelperItem("TELEPHONE ", "numTel"),
             new AbstractHelperItem("CODEPOSTAL ", "codePost"),
         new AbstractHelperItem("TELEPHONE ", "numTel")};

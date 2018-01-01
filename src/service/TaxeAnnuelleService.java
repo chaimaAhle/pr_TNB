@@ -16,40 +16,26 @@ import java.util.Date;
  * @author simob
  */
 public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
-    RedevableService redevableService=new RedevableService();
-    TerrainService terrainService= new TerrainService();
+
+    RedevableService redevableService = new RedevableService();
+    TerrainService terrainService = new TerrainService();
+
     public TaxeAnnuelleService() {
         super(TaxeAnnuelle.class);
     }
-    
-    public int payerAnnee(TaxeAnnuelle taxeAnnuelle){
-   if
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-    return 1;
+
+    public int payerAnnee(Redevable r, Terrain t,TauxTaxeService tts) {
+        Redevable redevable = redevableService.findByCriteria();
+        if (redevable == null) {
+            return -1;
+        }else if(redevable.getTerrains().isEmpty()||redevable.getTerrains()==null){
+            return -2;
+        }else{
+            Terrain terrain=terrainService.find(t.getNumeroLot());
+            
+        }
+
+        return 1;
+
     }
-    
 }
