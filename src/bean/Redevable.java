@@ -37,7 +37,7 @@ public class Redevable implements Serializable {
     
     private String numTel;
     
-    private String   codePost;
+    private String codePost;
     
     @OneToOne
     private Utilisateur Utilisateur;
