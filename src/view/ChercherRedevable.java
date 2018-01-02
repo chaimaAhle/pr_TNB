@@ -6,12 +6,9 @@
 package view;
 
 import bean.Redevable;
-import bean.Terrain;
 import helper.RedevableHelper;
-import helper.TerrainHelper;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.JTable;
 import service.RedevableService;
 import util.Session;
 
@@ -33,7 +30,11 @@ public class ChercherRedevable extends javax.swing.JFrame {
     }
     
       private Redevable getParam(){
-        Redevable redevable=new Redevable(jTextField1.getText(),jTextField2.getText(),jTextField3.getText(),jTextField4.getText());
+        Redevable redevable=new Redevable();
+       redevable.setCin(jTextField1.getText());
+       redevable.setNom(jTextField2.getText());
+       redevable.setPrenom(jTextField3.getText());
+       redevable.setAdresse(jTextField4.getText());
         return redevable;
     }
       public void initHelper(){
@@ -231,8 +232,8 @@ public class ChercherRedevable extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            res= redevableService.findByCriteria(getParam());
-        redevableHelper.setList(res);
+            res=redevableService.findByCriteria(getParam());
+            redevableHelper.setList(res);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed

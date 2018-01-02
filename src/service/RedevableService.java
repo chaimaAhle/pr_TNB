@@ -7,6 +7,7 @@ package service;
 
 import bean.Redevable;
 import controller.util.SearchUtil;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -65,7 +66,8 @@ public class RedevableService extends AbstractFacade<Redevable> {
     }
 
      public List<Redevable> findByCriteria(Redevable redevable) {
-        String requette = "SELECT r FROM Redevable r WHERE 1=1";
+        List<Redevable> redevables=new ArrayList();
+         String requette = "SELECT r FROM Redevable r WHERE 1=1";
         if (!redevable.getCin().equals("")) {
             requette += SearchUtil.addConstraint("r", "cin", "=", redevable.getCin());
         }
@@ -80,8 +82,8 @@ public class RedevableService extends AbstractFacade<Redevable> {
         if (!redevable.getAdresse().equals("")) {
             requette += SearchUtil.addConstraint("r", "adresse", "=", redevable.getAdresse());
         }
-        System.out.println(requette);
-        return getEntityManager().createQuery(requette).getResultList();
+      redevables=getEntityManager().createQuery(requette).getResultList();
+      return redevables;
     }
   
 

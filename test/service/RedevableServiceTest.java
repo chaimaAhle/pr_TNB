@@ -7,6 +7,7 @@ package service;
 
 import bean.Redevable;
 import bean.Redevable_;
+import java.util.List;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -42,17 +43,47 @@ public class RedevableServiceTest {
     /**
      * Test of ajouter method, of class RedevableService.
      */
+//    @Test
+//    public void testAjouter() {
+//        System.out.println("ajouter");
+//        Redevable redevable = null;
+//        RedevableService instance = new RedevableService();
+//        int expResult = 0;
+//        int result = instance.ajouter(redevable);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//        fail("The test case is a prototype.");
+//    }
+
+    /**
+     * Test of findByCriteria method, of class RedevableService.
+     */
     @Test
-    public void testAjouter() {
-        System.out.println("ajouter");
-        Redevable redevable = new Redevable("EE1991","Noukhal", "Hafida","F","17,Derb Sidi makhlouf Aswel Marrakech","06322344","43232");
+    public void testFindByCriteria() {
+        System.out.println("findByCriteria");
+        Redevable redevable = new Redevable("EE1997", null, null,null);
         RedevableService instance = new RedevableService();
-        int expResult = 1;
-        int result = instance.ajouter(redevable);
+        List<Redevable> expResult =null ;
+        List<Redevable> result = instance.findByCriteria(redevable);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
-     
+       
     }
+
+    /**
+     * Test of ajouter method, of class RedevableService.
+     */
+//    @Test
+//    public void testAjouter() {
+//        System.out.println("ajouter");
+//        Redevable redevable = new Redevable("EE1991","Noukhal", "Hafida","F","17,Derb Sidi makhlouf Aswel Marrakech","06322344","43232");
+//        RedevableService instance = new RedevableService();
+//        int expResult = 1;
+//        int result = instance.ajouter(redevable);
+//        assertEquals(expResult, result);
+//        // TODO review the generated test code and remove the default call to fail.
+//     
+//    }
 
     /**
      * Test of modifier method, of class RedevableService.
