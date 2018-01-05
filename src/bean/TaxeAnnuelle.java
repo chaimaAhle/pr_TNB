@@ -47,8 +47,7 @@ public class TaxeAnnuelle implements Serializable {
     
     @ManyToOne
     private TauxTaxe tauxTaxe;
-    
-    
+      
     @OneToOne
     private  TauxRetard tauxRetard;
 

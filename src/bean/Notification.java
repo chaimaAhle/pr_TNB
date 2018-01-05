@@ -32,7 +32,7 @@ public class Notification implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
-    
+    private int type;
     private float  montantEstime;
     
     private int annee;
@@ -92,6 +92,16 @@ public class Notification implements Serializable {
         this.annee = annee;
     }
 
+    public int getType() {
+        return type;
+    }
+
+    public void setType(int type) {
+        this.type = type;
+    }
+
+    
+    
     public Date getDateEnvoi() {
         if(dateEnvoi==null){
             Date dateEnvoi= new Date();

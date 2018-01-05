@@ -6,6 +6,8 @@
 package view;
 
 import bean.Utilisateur;
+import java.util.Date;
+import util.DateUtil;
 import javax.swing.JOptionPane;
 import static javax.swing.JOptionPane.showMessageDialog;
 import service.UtilisateurService;
@@ -22,6 +24,13 @@ public class Connexion extends javax.swing.JFrame {
      */
     public Connexion() {
         initComponents();
+        Date x=DateUtil.convert("01-03-"+new Date().getYear()+"");
+      Date dateActuel=new Date();
+        System.out.println(dateActuel.getYear());
+        System.out.println(dateActuel);
+        
+        
+        
     }
 
     /**
@@ -95,7 +104,7 @@ public class Connexion extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 720, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

@@ -13,37 +13,39 @@ import util.Session;
  *
  * @author simob
  */
-public class CategorieTerrainService extends AbstractFacade<CategorieTerrain>{
-    Utilisateur utilisateur=new Utilisateur();
+public class CategorieTerrainService extends AbstractFacade<CategorieTerrain> {
+
+    Utilisateur utilisateur = new Utilisateur();
+
     public CategorieTerrainService() {
         super(CategorieTerrain.class);
     }
-    
-    public int ajouter(String nom){
-        if (nom==null) {
+
+    public int ajouter(String nom) {
+        if (nom == null) {
             return -1;
-        }else{
-            CategorieTerrain categorieTerrain=new CategorieTerrain(nom);
-            categorieTerrain.setUtilisateur((Utilisateur)Session.getAttribut("connectedUser"));
+        } else {
+            CategorieTerrain categorieTerrain = new CategorieTerrain(nom);
+            categorieTerrain.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
             create(categorieTerrain);
             return 1;
         }
     }
-    
-    public int modify(CategorieTerrain categorieTerrain){
-        if(utilisateur.isIsAdmin()==false){
+
+    public int modify(CategorieTerrain categorieTerrain) {
+        if (utilisateur.isIsAdmin() == false) {
             return -1;
-        }else{
+        } else {
             edit(categorieTerrain);
             return 1;
-        }    
-    }  
-    
-//    public int remove(CategorieTerrain categorieTerrain){
-//        if(!find(categorieTerrain.getId()).getTerrains().isEmpty()){
-//            
-//        }
-//              
-//        super.remove(categorieTerrain);
-//    }
+        }
+    }
+
+    public CategorieTerrain findByNom(String nom) {
+        if (!nom.equals("")) {
+            String requette = "SELECT c FROM CategorieTerrain c WHERE c.nom='" + nom + "'";
+            return (CategorieTerrain) getEntityManager().createQuery(requette).getSingleResult();
+        }
+        return null;
+    }
 }

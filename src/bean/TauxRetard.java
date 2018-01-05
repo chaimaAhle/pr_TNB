@@ -28,15 +28,15 @@ public class TauxRetard implements Serializable {
     private Long id;
     
     private BigDecimal penalite;
-    private BigDecimal pourcentagePremierMois;
-    private BigDecimal pourcentageAutreMois;
+    private BigDecimal premierMois;
+    private BigDecimal autreMois;
     @OneToOne
     private Utilisateur utilisateur;
     @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateApplication;
     
-    @OneToOne(mappedBy = "tauxRetard")
-    private TaxeAnnuelle taxeAnnuelle;
+
+
     public TauxRetard() {
     }
 
@@ -46,20 +46,8 @@ public class TauxRetard implements Serializable {
 
     public TauxRetard(BigDecimal penalite, BigDecimal pourcentagePremierMois, BigDecimal pourcentageAutreMois) {
         this.penalite = penalite;
-        this.pourcentagePremierMois = pourcentagePremierMois;
-        this.pourcentageAutreMois = pourcentageAutreMois;
-    }
-
-   
-
-    public TaxeAnnuelle getTaxeAnnuelle() {
-       if(taxeAnnuelle==null)
-           taxeAnnuelle=new TaxeAnnuelle();
-        return taxeAnnuelle;
-    }
-
-    public void setTaxeAnnuelle(TaxeAnnuelle taxeAnnuelle) {
-        this.taxeAnnuelle = taxeAnnuelle;
+        this.premierMois = pourcentagePremierMois;
+        this.autreMois = pourcentageAutreMois;
     }
 
     
@@ -79,20 +67,20 @@ public class TauxRetard implements Serializable {
         this.penalite = penalite;
     }
 
-    public BigDecimal getPourcentagePremierMois() {
-        return pourcentagePremierMois;
+    public BigDecimal getPremierMois() {
+        return premierMois;
     }
 
-    public void setPourcentagePremierMois(BigDecimal pourcentagePremierMois) {
-        this.pourcentagePremierMois = pourcentagePremierMois;
+    public void setPremierMois(BigDecimal PremierMois) {
+        this.premierMois = PremierMois;
     }
 
-    public BigDecimal getPourcentageAutreMois() {
-        return pourcentageAutreMois;
+    public BigDecimal getAutreMois() {
+        return autreMois;
     }
 
-    public void setPourcentageAutreMois(BigDecimal pourcentageAutreMois) {
-        this.pourcentageAutreMois = pourcentageAutreMois;
+    public void setAutreMois(BigDecimal AutreMois) {
+        this.autreMois = AutreMois;
     }
 
     
@@ -140,11 +128,7 @@ public class TauxRetard implements Serializable {
 
     @Override
     public String toString() {
-        return "TauxRetard{" + "id=" + id + ", penalite=" + penalite + ", pourcentagePremierMois=" + pourcentagePremierMois + ", pourcentageAutreMois=" + pourcentageAutreMois + '}';
-    }
-
-    
-
-    
+        return "TauxRetard{" + "id=" + id + ", penalite=" + penalite.toEngineeringString() + ", premierMois=" + premierMois.toPlainString()+ ", autreMois=" + autreMois.toString() + '}';
+    }  
 }
  

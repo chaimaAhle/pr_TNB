@@ -10,6 +10,7 @@ import bean.TauxTaxe;
 import bean.TaxeAnnuelle;
 import bean.Terrain;
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  *
@@ -19,31 +20,21 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
 
     RedevableService redevableService = new RedevableService();
     TerrainService terrainService = new TerrainService();
-    TauxTaxeService tauxTaxeService= new TauxTaxeService();
+    TauxTaxeService tauxTaxeService = new TauxTaxeService();
+
     public TaxeAnnuelleService() {
         super(TaxeAnnuelle.class);
     }
 
-    public int payerAnnee(Redevable r, Terrain t) {
-        Redevable redevable = redevableService.findByCriteria();
-        if (redevable == null) {
+    public int payerAnnee(Terrain terrain) {
+        if (terrain == null) {
             return -1;
-        }else if(redevable.getTerrains().isEmpty()||redevable.getTerrains()==null ||!redevable.getTerrains().contains(t)){
-            return -2;
-        }else{
-            Terrain terrain=terrainService.find(t.getNumeroLot());
-            if(terrain==null){
-                return -3;
-            }else{
-                BigDecimal tauxTaxe=terrain.getCategorieTerrain().getTauxTaxe().getTaux();
-                BigDecimal penalité=
-            }
-            
-            
-            
+        } else {
+            BigDecimal tauxTaxe = terrain.getCategorieTerrain().getTauxTaxe().getTaux();
+          
         }
-
-        return 1;
-
+return 1;
     }
+
+
 }

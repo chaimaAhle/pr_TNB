@@ -5,19 +5,57 @@
  */
 package view;
 
+import bean.CategorieTerrain;
+import bean.Terrain;
+import helper.TerrainHelper;
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.List;
+import service.CategorieTerrainService;
+import service.TerrainService;
+
 /**
  *
  * @author simob
  */
 public class RechercherTerrain extends javax.swing.JFrame {
-
+    CategorieTerrainService categorieTerrainService=new CategorieTerrainService();
+    List<CategorieTerrain>categTers=new ArrayList();
+   List<Terrain>resTers=new ArrayList();
+    TerrainHelper terrainHelper;
+    TerrainService terrainService=new TerrainService();
+   
     /**
      * Creates new form RechercherTerrain
      */
     public RechercherTerrain() {
         initComponents();
+        initComboBox1();
+        initHelper();
     }
-
+    
+    public Terrain getParam(){
+    Terrain terrain =new Terrain();
+    terrain.setNumeroLot(new Long(jTextField1.getText()));
+    terrain.setVille(jTextField4.getText());
+    terrain.setZoneGeo(jTextField3.getText());
+    terrain.setDateAchat(jDateChooser2.getDate());
+    terrain.setCategorieTerrain((CategorieTerrain) (jComboBox1.getSelectedItem()));
+    return terrain;
+}
+ 
+    public void initHelper(){
+        terrainHelper=new TerrainHelper(jTable1);
+    }
+      public void initComboBox1(){
+       categTers=categorieTerrainService.findAll();
+        for (int i = 0; i <categTers.size(); i++) {
+            CategorieTerrain item = categTers.get(i);
+            jComboBox1.addItem(item.getNom());
+        }      
+      }
+      
+      
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -28,14 +66,151 @@ public class RechercherTerrain extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField2 = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
+        jTextField5 = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jDateChooser2 = new com.toedter.calendar.JDateChooser();
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(52, 18, 51, 21);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(170, 40, 80, 24);
+
+        jLabel2.setText("N deLot");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(100, 40, 60, 16);
+
+        jLabel3.setText("ville");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(370, 100, 22, 16);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(480, 40, 70, 24);
+
+        jLabel4.setText("zoneGeo");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(90, 90, 49, 16);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(170, 90, 70, 24);
+
+        jLabel5.setText("surface");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(350, 40, 44, 16);
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(420, 90, 100, 24);
+
+        jLabel6.setText("Categorie de Terrain");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(40, 160, 116, 16);
+
+        jLabel7.setText("date d'achat");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(340, 150, 80, 16);
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
+        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(180, 150, 90, 26);
+        getContentPane().add(jTextField5);
+        jTextField5.setBounds(620, 40, 73, 24);
+
+        jLabel8.setText("min");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(440, 40, 30, 16);
+
+        jLabel9.setText("max");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(580, 40, 25, 16);
+        getContentPane().add(jDateChooser2);
+        jDateChooser2.setBounds(430, 140, 160, 40);
+
+        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane1.setViewportView(jTable1);
+
+        jPanel1.add(jScrollPane1);
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(0, 250, 820, 400);
+
+        jButton1.setText("Rechercher");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(120, 200, 120, 32);
+
+        jButton2.setText("Restaurer");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(247, 200, 100, 32);
+
+        jButton3.setText("Menu");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton3);
+        jButton3.setBounds(450, 200, 61, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox1ActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         resTers=terrainService.findByCriteria(getParam(),new BigDecimal(jTextField2.getText()) ,new BigDecimal(jTextField5.getText()));
+        terrainHelper.setList(resTers);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,6 +248,27 @@ public class RechercherTerrain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jComboBox1;
+    private com.toedter.calendar.JDateChooser jDateChooser2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTextField jTextField4;
+    private javax.swing.JTextField jTextField5;
     // End of variables declaration//GEN-END:variables
 }

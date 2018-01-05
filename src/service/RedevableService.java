@@ -58,13 +58,8 @@ public class RedevableService extends AbstractFacade<Redevable> {
             return -6;
         } else {
             edit(redevable);
-            return -1;
+            return 1;
         }
-    }
-
-    public Redevable  findByCriteria(){
-        Redevable redevable= new Redevable();
-        return redevable;
     }
     
  public List<Redevable> findByCriteria(Redevable redevable) {

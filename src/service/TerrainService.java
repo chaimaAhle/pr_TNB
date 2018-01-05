@@ -5,6 +5,7 @@
  */
 package service;
 
+import bean.Redevable;
 import bean.Terrain;
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -23,13 +24,12 @@ public class TerrainService extends AbstractFacade<Terrain> {
         super(Terrain.class);
     }
     RedevableService redevableService = new RedevableService();
-//    public int ajouter(String ville,String ZoneGeo,BigDecimal surface,CategorieTerrain categorieTerrain, Date dateAchat,String cneRedevable ){
 
     public int ajouter(Terrain terrain) {
-       if(find(terrain.getNumeroLot())==null){
-           return -1;
-       }
-        if (terrain == null||terrain.getRedevable()==null) {
+        if (find(terrain.getNumeroLot()) == null) {
+            return -1;
+        }
+        if (terrain == null || terrain.getRedevable() == null) {
             return -2;
         } else {
             if (terrain.getVille() == null) {
@@ -47,33 +47,44 @@ public class TerrainService extends AbstractFacade<Terrain> {
             }
         }
     }
-    
- public int modify(Terrain terrain){
-   if(terrain.getNumeroLot()==null){
-           return -1;
-            }else if (terrain.getVille() == null) {
-                return -2;
-            } else if (terrain.getZoneGeo() == null) {
-                return -3;
 
-            } else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0||terrain.getSurface()==null) {
-                return -4;
-            } else if (terrain.getCategorieTerrain() == null) {
-                return -5;
-            }else{
-                edit(terrain);
-                return 1;
-            }
-}
- public List<Terrain> findByCriteria(Terrain terrain,Date dateAchatMin,Date dateAchatMax,BigDecimal surfaceMin,BigDecimal surfaceMax){
-     List<Terrain> terrains=new ArrayList<>();
-     String req="SELECT t FROM Terrain t WHERE 1=1";
-     req+=addConstraint("t", "ville","=",terrain.getVille());
-     req+=addConstraint("t", "ZoneGeo","=",terrain.getZoneGeo());
-     req+=addConstraint("t", "categorieTerrain.nom","=",terrain.getCategorieTerrain().getNom());
-     req+=SearchUtil.addConstraintMinMax("t", "surface", surfaceMin, surfaceMax);
-     req+=SearchUtil.addConstraintMinMaxDate("t", "dateAchat", dateAchatMin, dateAchatMax);
-     return terrains;
- }
- 
+    public int modify(Terrain terrain) {
+        if (terrain.getNumeroLot() == null) {
+            return -1;
+        } else if (terrain.getVille() == null) {
+            return -2;
+        } else if (terrain.getZoneGeo() == null) {
+            return -3;
+
+        } else if (terrain.getSurface().compareTo(new BigDecimal(100)) < 0 || terrain.getSurface() == null) {
+            return -4;
+        } else if (terrain.getCategorieTerrain() == null) {
+            return -5;
+        } else {
+            edit(terrain);
+            return 1;
+        }
+    }
+
+    public List<Terrain> findByRedevable(Redevable redevable) {
+        String requette = "SELECT t FROM Terrain t WHERE 1=1";
+            requette += SearchUtil.addConstraint("t", "redevable.cin", "=", redevable.getCin());
+            requette += SearchUtil.addConstraint("t", "redevable.prenom", "=", redevable.getPrenom());
+            requette += SearchUtil.addConstraint("t", "redevable.nom", "=", redevable.getNom());
+            requette += SearchUtil.addConstraint("t", "redevable.adresse", "=", redevable.getAdresse());
+            requette += SearchUtil.addConstraint("t", "redevable.codePost", "=", redevable.getCodePost());
+        return getEntityManager().createQuery(requette).getResultList();
+    }
+
+    public List<Terrain> findByCriteria(Terrain terrain,BigDecimal surfMax,BigDecimal surfMin) {
+        String requette = "SELECT t FROM Terrain t WHERE 1=1";
+            requette += SearchUtil.addConstraint("t", "numeroLot", "=", terrain.getNumeroLot());
+            requette += SearchUtil.addConstraint("t", "ville", "=", terrain.getVille());
+            requette += SearchUtil.addConstraint("t", "zoneGeo", "=", terrain.getZoneGeo());
+            requette += SearchUtil.addConstraintMinMax("t", "surface", surfMin, surfMax);
+            requette += SearchUtil.addConstraint("t", "dateAchat", "=", terrain.getDateAchat());
+            requette += SearchUtil.addConstraint("t", "categorieTerrain", "=", terrain.getCategorieTerrain());
+        return getEntityManager().createQuery(requette).getResultList();
+    }
+
 }
