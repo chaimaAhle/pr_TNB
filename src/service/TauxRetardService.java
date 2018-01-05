@@ -57,5 +57,7 @@ public class TauxRetardService extends AbstractFacade<TauxRetard>{
             return 1;
         }
     }     
-     
+     public TauxRetard findByDateApplication(Date dateApplication){
+         return (TauxRetard)getEntityManager().createQuery("SELECT t FROM TauxTaxe t WHERE dateApplication ='"+dateApplication+"'").getSingleResult();
+                 }
 }

@@ -211,9 +211,6 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
                 throw new AssertionError();
         }
         
-        
-        
-        
         tauxTaxeHelper.update(tauxTaxe);
     }//GEN-LAST:event_jButton2ActionPerformed
 

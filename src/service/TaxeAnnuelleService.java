@@ -5,11 +5,10 @@
  */
 package service;
 
-import bean.Redevable;
-import bean.TauxTaxe;
+import bean.TauxRetard;
 import bean.TaxeAnnuelle;
-import bean.Terrain;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.Date;
 
 /**
@@ -21,20 +20,49 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
     RedevableService redevableService = new RedevableService();
     TerrainService terrainService = new TerrainService();
     TauxTaxeService tauxTaxeService = new TauxTaxeService();
+    TauxRetardService tauxRetardService = new TauxRetardService();
 
     public TaxeAnnuelleService() {
         super(TaxeAnnuelle.class);
     }
 
-    public int payerAnnee(Terrain terrain) {
-        if (terrain == null) {
-            return -1;
-        } else {
-            BigDecimal tauxTaxe = terrain.getCategorieTerrain().getTauxTaxe().getTaux();
-          
-        }
-return 1;
+    public Date findLastDateTauxRetard() {
+        String req = "Select max(dateApplication) from TauxRetard";
+        Date dateTauxRetard = (Date) getEntityManager().createNativeQuery(req).getSingleResult();
+        return dateTauxRetard;
     }
-
+    
+    public int nbMoisRetard(TaxeAnnuelle taxeAnnuelle){
+        if (taxeAnnuelle==null){
+            return -1;
+        }else if(taxeAnnuelle.getDatePresentaion()==null){
+            return -2;
+        }else if(taxeAnnuelle.getDateTaxe()==null){
+            return -3;
+        }else{
+           Date presentation=taxeAnnuelle.getDatePresentaion();
+           Date taxe=taxeAnnuelle.getDateTaxe();
+           
+        }
+    }
+    
+    public int payerAnnee(TaxeAnnuelle taxeAnnuelle) {
+        if (taxeAnnuelle == null) {
+            return -1;
+        } else if (taxeAnnuelle.getTerrain().getCategorieTerrain().getTauxTaxe().getTaux() == null) {
+            return -2;
+        } else if (tauxRetardService.count() == 0) {
+            return -3;
+        } else {
+            BigDecimal taux = taxeAnnuelle.getTerrain().getCategorieTerrain().getTauxTaxe().getTaux();
+            Date dateApplication = findLastDateTauxRetard();
+            TauxRetard tauxRetard = tauxRetardService.findByDateApplication(dateApplication);
+            BigDecimal montantSansRetard = taxeAnnuelle.getTerrain().getSurface().multiply(taux);
+            
+            
+            
+        }
+        return 1;
+    }
 
 }
