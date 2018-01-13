@@ -313,8 +313,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
             JOptionPane.showMessageDialog(null, "veillez entrer une surface valide", "error", JOptionPane.ERROR_MESSAGE);
         }else if(res==-6){
             JOptionPane.showMessageDialog(null, "veillez choisir une categorie", "error", JOptionPane.ERROR_MESSAGE);
-        }else if(res==1){            JOptionPane.showMessageDialog(null, "veillez choisir une categorie", "error", JOptionPane.ERROR_MESSAGE);
-
+        }else if(res==1){
             JOptionPane.showMessageDialog(null, "ajout de terrain avec succes", "info", JOptionPane.INFORMATION_MESSAGE);
             
         }

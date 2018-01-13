@@ -6,7 +6,6 @@
 package service;
 
 import bean.TauxRetard;
-import java.math.BigDecimal;
 import java.util.Date;
 import util.SearchUtil;
 
@@ -60,4 +59,16 @@ public class TauxRetardService extends AbstractFacade<TauxRetard>{
      public TauxRetard findByDateApplication(Date dateApplication){
          return (TauxRetard)getEntityManager().createQuery("SELECT t FROM TauxTaxe t WHERE dateApplication ='"+dateApplication+"'").getSingleResult();
                  }
+     private Date getDateFromNewOne(){
+         String req="SELECT MAX(dateApplication) FROM TauxRetard";
+         Date d=(Date) getEntityManager().createNativeQuery(req).getSingleResult();
+         return d;
+     }
+     
+     public TauxRetard findNewOne(){
+         Date d=getDateFromNewOne();
+         String req="SELECT tr FROM TauxRetard tr WHERE 1=1";
+         req+=SearchUtil.addConstraintDate("tr", "dateApplication", "=", d);
+         return (TauxRetard) getEntityManager().createQuery(req).getSingleResult();
+     }
 }

@@ -24,7 +24,7 @@ public class TerrainService extends AbstractFacade<Terrain> {
         super(Terrain.class);
     }
     RedevableService redevableService = new RedevableService();
-
+    
     public int ajouter(Terrain terrain) {
         if (find(terrain.getNumeroLot()) == null) {
             return -1;
@@ -60,6 +60,8 @@ public class TerrainService extends AbstractFacade<Terrain> {
             return -4;
         } else if (terrain.getCategorieTerrain() == null) {
             return -5;
+        }else if (terrain.getRedevable() == null) {
+            return -6;
         } else {
             edit(terrain);
             return 1;

@@ -23,14 +23,7 @@ public class Connexion extends javax.swing.JFrame {
      * Creates new form Connexion
      */
     public Connexion() {
-        initComponents();
-        Date x=DateUtil.convert("01-03-"+new Date().getYear()+"");
-      Date dateActuel=new Date();
-        System.out.println(dateActuel.getYear());
-        System.out.println(dateActuel);
-        
-        
-        
+        initComponents();    
     }
 
     /**

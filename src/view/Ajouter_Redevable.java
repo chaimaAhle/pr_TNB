@@ -282,7 +282,7 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
             default:
                 break;
         }
-        new Menu().setVisible(true);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed

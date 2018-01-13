@@ -42,12 +42,11 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
             return -1;
         } else if (taxeAnnuelle.getTerrain().getCategorieTerrain().getTauxTaxe().getTaux() == null) {
             return -2;
-        } else if (tauxRetardService.count() == 0) {
+        } else if (tauxRetardService.count() == 0){
             return -3;
         } else {
             BigDecimal taux = taxeAnnuelle.getTerrain().getCategorieTerrain().getTauxTaxe().getTaux();
-            Date dateApplication = findLastDateTauxRetard();
-            TauxRetard tauxRetard = tauxRetardService.findByDateApplication(dateApplication);
+            TauxRetard tauxRetard = tauxRetardService.findNewOne();
             BigDecimal montant = taxeAnnuelle.getTerrain().getSurface().multiply(taux);
             int nbMois = calculMoisRetard(taxeAnnuelle.getDatePresentaion(), taxeAnnuelle.getDateTaxe());
             if (nbMois < 0) {
@@ -57,7 +56,6 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
             }else if(nbMois>1){
                 montant=montant.add(montant.multiply(tauxRetard.getPenalite().add(tauxRetard.getPremierMois()).add(tauxRetard.getAutreMois().multiply(new BigDecimal(nbMois)))));
             }
-
         }
         return 1;
     }
