@@ -25,27 +25,18 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
     public TaxeAnnuelleService() {
         super(TaxeAnnuelle.class);
     }
-
-    public Date findLastDateTauxRetard() {
-        String req = "Select max(dateApplication) from TauxRetard";
-        Date dateTauxRetard = (Date) getEntityManager().createNativeQuery(req).getSingleResult();
-        return dateTauxRetard;
-    }
     
-    public int nbMoisRetard(TaxeAnnuelle taxeAnnuelle){
-        if (taxeAnnuelle==null){
+    public int calculMoisRetard(Date taxe, Date presentation) {
+        if (presentation == null) {
             return -1;
-        }else if(taxeAnnuelle.getDatePresentaion()==null){
+        } else if (taxe == null) {
             return -2;
-        }else if(taxeAnnuelle.getDateTaxe()==null){
-            return -3;
-        }else{
-           Date presentation=taxeAnnuelle.getDatePresentaion();
-           Date taxe=taxeAnnuelle.getDateTaxe();
-           
+        } else {
+            int nbMois = (int) ((presentation.getTime() - taxe.getTime()) / (1000 * 60 * 60 * 24 * 30));
+            return nbMois;
         }
     }
-    
+
     public int payerAnnee(TaxeAnnuelle taxeAnnuelle) {
         if (taxeAnnuelle == null) {
             return -1;
@@ -57,12 +48,22 @@ public class TaxeAnnuelleService extends AbstractFacade<TaxeAnnuelle> {
             BigDecimal taux = taxeAnnuelle.getTerrain().getCategorieTerrain().getTauxTaxe().getTaux();
             Date dateApplication = findLastDateTauxRetard();
             TauxRetard tauxRetard = tauxRetardService.findByDateApplication(dateApplication);
-            BigDecimal montantSansRetard = taxeAnnuelle.getTerrain().getSurface().multiply(taux);
-            
-            
-            
+            BigDecimal montant = taxeAnnuelle.getTerrain().getSurface().multiply(taux);
+            int nbMois = calculMoisRetard(taxeAnnuelle.getDatePresentaion(), taxeAnnuelle.getDateTaxe());
+            if (nbMois < 0) {
+                return -4;
+            } else if (nbMois==1) {
+                montant=montant.add(montant.multiply(tauxRetard.getPenalite().add(tauxRetard.getPremierMois())));
+            }else if(nbMois>1){
+                montant=montant.add(montant.multiply(tauxRetard.getPenalite().add(tauxRetard.getPremierMois()).add(tauxRetard.getAutreMois().multiply(new BigDecimal(nbMois)))));
+            }
+
         }
         return 1;
     }
 
+//    private BigDecimal calculMontantTotal(){
+//        
+//    }
+    
 }

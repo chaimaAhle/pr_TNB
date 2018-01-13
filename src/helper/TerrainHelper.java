@@ -7,6 +7,7 @@ package helper;
 
 import bean.Redevable;
 import bean.Terrain;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JTable;
 
@@ -20,15 +21,11 @@ public class TerrainHelper extends AbstractHelper<Terrain> {
 
     static {
         titres = new AbstractHelperItem[]{
-            new AbstractHelperItem("CIN ", "numeroLot"),
-            new AbstractHelperItem("NOM ", "surface"),
-            new AbstractHelperItem("PRENOM ", "ville"),
-            new AbstractHelperItem("SEXE ", "ZoneGeo"),
-            new AbstractHelperItem("ADRESSE ", "dateAchat"),
-            new AbstractHelperItem("TELEPHONE ", "numTel"),
-            new AbstractHelperItem("CODEPOSTAL ", "codePost"),
-        new AbstractHelperItem("TELEPHONE ", "numTel")};
-
+            new AbstractHelperItem("n° Lot ", "numeroLot"),
+            new AbstractHelperItem("ville ", "ville"),
+            new AbstractHelperItem("zone geographique ", "ZoneGeo"),
+            new AbstractHelperItem("surface(m²)", "surface"),
+            new AbstractHelperItem("date d'achat ", "dateAchat")};
     }
 
     public TerrainHelper(JTable jTable, List<Terrain> list) {
@@ -42,4 +39,31 @@ public class TerrainHelper extends AbstractHelper<Terrain> {
     public TerrainHelper(JTable jTable) {
         super(titres, jTable);
     }
+
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        if (list != null && rowIndex < list.size()) {
+//add by benmansour
+            if (columnIndex == 0) {
+                return list.get(rowIndex).getNumeroLot().toString();
+            }
+            if (columnIndex == 1) {
+                return list.get(rowIndex).getVille().toString();
+            }
+            if (columnIndex == 2) {
+                return list.get(rowIndex).getZoneGeo().toString();
+            }
+            if (columnIndex == 2) {
+                return list.get(rowIndex).getSurface().toString();
+            }
+//end of adding            
+            if (columnIndex == 4) {
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd-MM-yyyy");
+                return simpleDateFormat.format(list.get(rowIndex).getDateAchat());
+            } else {
+                return super.getValueAt(rowIndex, columnIndex).toString();
+            }
+        }
+        return "";
+    }
+
 }
