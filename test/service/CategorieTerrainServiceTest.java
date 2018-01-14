@@ -45,7 +45,7 @@ public class CategorieTerrainServiceTest {
     public void testAjouter() {
         System.out.println("ajouter");
         System.out.println(new Date());
-        String nom = "Autre";
+        String nom = "autre";
         CategorieTerrainService instance = new CategorieTerrainService();
         int expResult = 1;
         int result = instance.ajouter(nom);

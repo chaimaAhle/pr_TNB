@@ -26,7 +26,7 @@ public class CategorieTerrainService extends AbstractFacade<CategorieTerrain> {
             return -1;
         } else {
             CategorieTerrain categorieTerrain = new CategorieTerrain(nom);
-            categorieTerrain.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
+            //categorieTerrain.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
             create(categorieTerrain);
             return 1;
         }

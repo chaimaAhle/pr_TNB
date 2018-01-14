@@ -51,7 +51,7 @@ List<CategorieTerrain>categTers=new ArrayList<>();
         terrain.setNumeroLot(new Long(jTextField4.getText()));
         terrain.setSurface(new BigDecimal(jTextField3.getText()));
         terrain.setVille(jTextField6.getText());
-        terrain.setVille(jTextField5.getText());
+        terrain.setZoneGeo(jTextField5.getText());
         terrain.setRedevable(redevableService.find(jTextField1.getText()));
         terrain.setCategorieTerrain(cat);
         terrain.setDateAchat(jDateChooser1.getDate());
