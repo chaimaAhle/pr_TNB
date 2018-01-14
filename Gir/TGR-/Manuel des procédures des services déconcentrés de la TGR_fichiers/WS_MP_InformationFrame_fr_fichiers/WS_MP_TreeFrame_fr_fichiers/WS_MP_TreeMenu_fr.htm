@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0048)http://10.97.4.40/STANDARD/WS_MP_TreeMenu_fr.htm -->
+<HTML><HEAD><TITLE>MEGA_Process_600_Tree</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252"><LINK 
+href="WS_MP_TreeMenu_fr_fichiers/WS_Intranet.css" type=text/css rel=STYLESHEET>
+<META content="MSHTML 6.00.2900.2853" name=GENERATOR></HEAD>
+<BODY topMargin=16 marginheight="16">
+<SCRIPT>
+			function CleanInfoSync()
+			{			
+				if(window.SyncInfoNotFound)
+				{
+					SyncInfoNotFound.style.display="none";	
+				}					
+			}					
+			function SynchronizeFromContent()
+			{				
+				CleanInfoSync();
+				
+				if(window.SyncInfoWait)
+				{			
+					SyncInfoWait.style.display="inline";	
+				}									
+				
+				var bFound;							
+				bFound=parent.frames("TreeControl").SynchronizeFromContent();
+						
+				if(!bFound && window.SyncInfoNotFound)
+				{
+					SyncInfoNotFound.style.display="inline";					
+					setTimeout("CleanInfoSync()", 2000);
+				}				
+				if(window.SyncInfoWait)
+				{				
+					SyncInfoWait.style.display="none";	
+				}	
+			}			
+			function BusinessProcessTreeLoad()
+			{
+				parent.frames("TreeControl").location="../PAGES/WS_MP_BusinessProcessTreeDefinition.htm"
+			}
+			function BusinessFunctionTreeLoad()
+			{
+				parent.frames("TreeControl").location="../PAGES/WS_MP_BusinessFunctionTreeDefinition.htm"
+			}
+			function ProcedureTreeLoad()
+			{
+				parent.frames("TreeControl").location="../PAGES/WS_MP_ProcedureTreeDefinition.htm"
+			}
+			function OrgUnitTreeLoad()
+			{
+				parent.frames("TreeControl").location="../PAGES/WS_MP_OrgUnitTreeDefinition.htm"
+			}	
+			function GeneralityTreeLoad()
+			{
+				parent.frames("TreeControl").location="../PAGES/WS_MP_GeneralityTreeDefinition.htm"
+			}							
+		</SCRIPT>
+
+<TABLE class=InvisibleTable cellSpacing=0 cellPadding=0 width="100%">
+  <TBODY>
+  <TR bgColor=#f4f4f4>
+    <TD class=Button id=Button title="Arbre des vues d'ensemble" 
+      width="10%"><IMG onclick=GeneralityTreeLoad(); 
+      src="WS_MP_TreeMenu_fr_fichiers/GENR.gif"> </TD>
+    <TD class=Button id=Button title="Arbre des métier" width="10%"><IMG 
+      onclick=BusinessFunctionTreeLoad(); 
+      src="WS_MP_TreeMenu_fr_fichiers/BUSA.gif"> </TD>
+    <TD class=Button id=Button title="Arbre des processus" width="10%"><IMG 
+      onclick=BusinessProcessTreeLoad(); 
+      src="WS_MP_TreeMenu_fr_fichiers/BUSP.gif"> </TD>
+    <TD class=Button id=Button title="Arbre des acteur" width="10%"><IMG 
+      onclick=OrgUnitTreeLoad(); src="WS_MP_TreeMenu_fr_fichiers/ORGU.gif"> </TD>
+    <TD class=Button id=Button title="Arbre des procédures" width="10%"><IMG 
+      onclick=ProcedureTreeLoad(); src="WS_MP_TreeMenu_fr_fichiers/PROC.gif"> 
+</TD>
+    <TD class=InvisibleTable width=* colSpan=5></TD>
+    <TD class=SyncInfo id=SyncInfoWait width="10%"><IMG 
+      src="WS_MP_TreeMenu_fr_fichiers/WS_WaitBB.gif" align=right> </TD>
+    <TD class=SyncInfo id=SyncInfoNotFound width="10%"><IMG 
+      src="WS_MP_TreeMenu_fr_fichiers/WS_SyncNotFound.gif" align=right> </TD>
+    <TD class=Button id=Button title="Recherche l'objet courant dans l'arbre" 
+    align=right width="10%"><IMG style="CURSOR: hand" 
+      onclick=SynchronizeFromContent(); 
+      src="WS_MP_TreeMenu_fr_fichiers/WS_ContentToTree.gif" align=right> 
+  </TD></TR></TBODY></TABLE>
+<TABLE id=TabMemory style="DISPLAY: none">
+  <TBODY>
+  <TR>
+    <TD id=TabMemoryPerspective>0</TD>
+    <TD id=TabMemoryBusinessProcess>0</TD>
+    <TD id=TabMemoryProcedure>0</TD>
+    <TD id=TabMemoryBusiness>0</TD>
+    <TD id=TabMemoryService>0</TD>
+    <TD id=TabMemoryProcess>0</TD>
+    <TD id=TabMemoryOrgUnit>0</TD>
+    <TD id=TabMemoryApplication>0</TD>
+    <TD id=TabMemoryActivity>0</TD>
+    <TD id=TabMemoryContent>0</TD></TR></TBODY></TABLE>
+<SCRIPT language=javascript 
+src="WS_MP_TreeMenu_fr_fichiers/WS_ButtonTemplate.js"></SCRIPT>
+
+<SCRIPT language=javascript 
+src="WS_MP_TreeMenu_fr_fichiers/WS_KeyShortcutTemplate.js"></SCRIPT>
+</BODY></HTML>

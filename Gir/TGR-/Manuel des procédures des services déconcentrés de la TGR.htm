@@ -1,0 +1,35 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Frameset//EN">
+<!-- saved from url=(0018)http://10.97.4.40/ -->
+<HTML><HEAD><TITLE>Manuel des procédures des services déconcentrés de la TGR</TITLE>
+<META content="MSHTML 6.00.2900.2853" url=http://www.mega.com/ 
+name=GENERATOR></META>
+<META content="MEGA International" name="Company name"></META>
+<META http-equiv=Content-Type 
+content="text/html; charset=iso-8859-1"></META><LINK href="WS_Intranet.css" 
+type=text/css rel=STYLESHEET>
+<SCRIPT language=vbscript>
+			sub checkRedirect
+				Dim oMatch, oMatches, re, sSearch, sPageId, oContent, sNewUrl
+				sSearch = window.location.search
+				Set re = New RegExp
+				re.Pattern = "id=([0123456789ABCDEFabcdef]{16})"
+				re.Global = True
+				re.MultiLine = False
+				Set oMatches = re.Execute(sSearch)
+				For Each oMatch In oMatches
+					sPageId = oMatch.subMatches(0)
+				Next
+				if sPageId <> "" then
+					set oContent = window.frames("InformationFrame").frames("Content")
+					sNewUrl = Replace (lcase(oContent.location.href), "standard/ws_mp_home_fr.htm", "pages/" & sPageId & ".htm")
+					oContent.location.replace sNewUrl
+				end if
+			end sub
+		</SCRIPT>
+</HEAD><FRAMESET rows="115, *" onload=checkRedirect><FRAME id=Permanent 
+name=Permanent borderColor=#2256a4 
+src="Manuel des procédures des services déconcentrés de la TGR_fichiers/WS_MP_Permanent_fr.htm" 
+frameBorder=1 noResize scrolling=no><FRAME id=InformationFrame 
+name=InformationFrame 
+src="Manuel des procédures des services déconcentrés de la TGR_fichiers/WS_MP_InformationFrame_fr.htm" 
+frameBorder=0 noResize></FRAMESET></HTML>
