@@ -62,8 +62,8 @@ public class RedevableService extends AbstractFacade<Redevable> {
         }
     }
     
- public List<Redevable> findByCriteria(Redevable redevable) {
-        List<Redevable> redevables= new ArrayList<>();
+ public List<Redevable> findByCritirea(Redevable redevable) {
+        List<Redevable> redevables= new ArrayList();
         String query ="SELECT r from Redevable r where 1=1";
         query+=addConstraint("r", "cin", "=", redevable.getCin());
         query+=addConstraint("r", "nom", "=", redevable.getNom());
@@ -72,6 +72,7 @@ public class RedevableService extends AbstractFacade<Redevable> {
         query+=addConstraint("r", "codePost", "=", redevable.getCodePost());
         
         redevables=getEntityManager().createQuery(query).getResultList();
+        System.out.println(">"+redevables.size());
         return redevables;
     }
 }

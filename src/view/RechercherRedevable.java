@@ -36,6 +36,7 @@ public class RechercherRedevable extends javax.swing.JFrame {
 public Redevable getParam(){
     Redevable redevable=new Redevable(jTextField1.getText(),jTextField2.getText(),
             jTextField3.getText(),jTextField4.getText(),jTextField5.getText());
+    System.out.println(redevable.toString());
    
     return redevable;
 }
@@ -242,9 +243,8 @@ public Redevable getParam(){
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        resRed=redevableService.findByCriteria(getParam());
+        resRed=redevableService.findByCritirea(getParam());
         redevableHelper.setList(resRed);
-        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

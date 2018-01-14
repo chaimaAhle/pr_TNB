@@ -32,10 +32,7 @@ public class TaxeAnnuelle implements Serializable {
     private Long id;
     private int annee;
    private BigDecimal montant; 
- 
-   @OneToOne
-   private Utilisateur utilisateur;
-   
+
      @Temporal(javax.persistence.TemporalType.DATE)
     private Date dateTaxe;
      
@@ -50,6 +47,9 @@ public class TaxeAnnuelle implements Serializable {
       
     @OneToOne
     private  TauxRetard tauxRetard;
+    
+    @OneToOne
+   private Utilisateur utilisateur;
 
     
     

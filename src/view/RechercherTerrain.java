@@ -93,6 +93,12 @@ public class RechercherTerrain extends javax.swing.JFrame {
         getContentPane().setLayout(null);
         getContentPane().add(jLabel1);
         jLabel1.setBounds(52, 18, 51, 21);
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField1);
         jTextField1.setBounds(170, 40, 80, 28);
 
@@ -115,6 +121,12 @@ public class RechercherTerrain extends javax.swing.JFrame {
         jLabel5.setText("surface");
         getContentPane().add(jLabel5);
         jLabel5.setBounds(350, 40, 41, 16);
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField4);
         jTextField4.setBounds(420, 90, 100, 28);
 
@@ -223,6 +235,14 @@ public class RechercherTerrain extends javax.swing.JFrame {
         Session.updateAttribute(terrain, "terrainToModify");
         new ModifierTerrain().setVisible(true);
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
 
     /**
      * @param args the command line arguments

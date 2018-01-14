@@ -6,6 +6,7 @@
 package helper;
 
 import bean.Redevable;
+import java.text.SimpleDateFormat;
 import java.util.List;
 import javax.swing.JTable;
 
@@ -25,11 +26,8 @@ public class RedevableHelper extends AbstractHelper<Redevable> {
             new AbstractHelperItem("SEXE ", "sexe"),
             new AbstractHelperItem("ADRESSE ", "adress"),
             new AbstractHelperItem("TELEPHONE ", "numTel"),
-            new AbstractHelperItem("CODEPOSTAL ", "codePost"),
-        new AbstractHelperItem("TELEPHONE ", "numTel")};
-            
-
-
+            new AbstractHelperItem("CODEPOSTAL ", "codePost")
+        };
     }
 
     public RedevableHelper(JTable jTable, List<Redevable> list) {
@@ -42,5 +40,38 @@ public class RedevableHelper extends AbstractHelper<Redevable> {
 
     public RedevableHelper(JTable jTable) {
         super(titres, jTable);
+    }
+
+    @Override
+    public Object getValueAt(int rowIndex, int columnIndex) {
+        if (list != null && rowIndex < list.size()) {
+//add by benmansour
+            if (columnIndex == 0) {
+                return list.get(rowIndex).getCin().toString();
+            }
+            if (columnIndex == 1) {
+                return list.get(rowIndex).getNom();
+            }
+            if (columnIndex == 2) {
+                return list.get(rowIndex).getPrenom();
+            }
+            if (columnIndex == 3) {
+                return list.get(rowIndex).getSexe();
+            }
+            if (columnIndex == 4) {
+                return list.get(rowIndex).getAdresse();
+            }
+            if (columnIndex == 5) {
+                return list.get(rowIndex).getNumTel();
+            }
+            if (columnIndex == 6) {
+                return list.get(rowIndex).getCodePost();
+            }
+//end of adding            
+             else {
+                return super.getValueAt(rowIndex, columnIndex).toString();
+            }
+        }
+        return "";
     }
 }
