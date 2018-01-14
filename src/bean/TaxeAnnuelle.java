@@ -32,7 +32,7 @@ public class TaxeAnnuelle implements Serializable {
     private Long id;
     private int annee;
    private BigDecimal montant; 
-    
+ 
    @OneToOne
    private Utilisateur utilisateur;
    
@@ -47,8 +47,7 @@ public class TaxeAnnuelle implements Serializable {
     
     @ManyToOne
     private TauxTaxe tauxTaxe;
-    
-    
+      
     @OneToOne
     private  TauxRetard tauxRetard;
 

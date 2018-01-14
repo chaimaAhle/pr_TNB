@@ -11,7 +11,7 @@ import javax.swing.JTable;
 
 /**
  *
- * @author YOUNES
+ * @author Aniela
  */
 public class RedevableHelper extends AbstractHelper<Redevable> {
 

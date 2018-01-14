@@ -64,10 +64,6 @@ public class UtilisateurService extends AbstractFacade<Utilisateur> {
         } else {
             edit(utilisateur);
             return 1;
-        }}
-
-    @Override
-    public void remove(Utilisateur uilisateur){
-    super.remove(uilisateur);
-}
+        }
+    }
 }

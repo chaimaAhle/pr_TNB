@@ -232,7 +232,7 @@ public class ChercherRedevable extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            res=redevableService.findByCriteria(getParam());
+            res=redevableService.findByCritirea(getParam());
             redevableHelper.setList(res);
     }//GEN-LAST:event_jButton1ActionPerformed
 

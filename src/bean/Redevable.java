@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package bean;
-
-import static bean.Terrain_.utilisateur;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -35,12 +33,12 @@ public class Redevable implements Serializable {
 
     private String adresse;
     
-    private String numTel;
+    private String numTel; 
     
     private String codePost;
     
     @OneToOne
-    private Utilisateur Utilisateur;
+    private Utilisateur utilisateur;
     
     @OneToMany(mappedBy = "redevable")
     private List<Terrain> terrains;
@@ -53,19 +51,18 @@ public class Redevable implements Serializable {
     public Redevable(String cin) {
         this.cin = cin;
     }
- public Redevable(String nom, String prenom) {
-        this.nom = nom;
-        this.prenom = prenom;
-    }
 
-    public Redevable(String cin, String nom, String prenom, String adresse) {
+    public Redevable(String cin, String nom, String prenom, String adresse, String codePost) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
         this.adresse = adresse;
+        this.codePost = codePost;
     }
+
  
-    public Redevable(String cin, String nom, String prenom, String sexe, String adresse, String numTel, String codePost) {
+
+    public Redevable(String cin, String nom, String prenom, String sexe, String adresse, String numTel,String codePost) {
         this.cin = cin;
         this.nom = nom;
         this.prenom = prenom;
@@ -75,6 +72,9 @@ public class Redevable implements Serializable {
         this.codePost = codePost;
     }
 
+   
+    
+    
     public String getCin() {
         return cin;
     }
@@ -105,6 +105,7 @@ public class Redevable implements Serializable {
     }
 
     public void setSexe(String sexe) {
+       
         this.sexe = sexe;
     }
 
@@ -141,15 +142,15 @@ public class Redevable implements Serializable {
         return terrains;
     }
 
-    public Utilisateur getUtilisateur() { 
-        if(utilisateur==null){
+    public Utilisateur getUtilisateur() {
+         if(utilisateur==null){
             Utilisateur utilisateur=new Utilisateur();
         }
-        return Utilisateur;
+        return utilisateur;
     }
 
-    public void setUtilisateur(Utilisateur Utilisateur) {
-        this.Utilisateur = Utilisateur;
+    public void setUtilisateur(Utilisateur utilisateur) {
+        this.utilisateur = utilisateur;
     }
 
     
@@ -190,7 +191,7 @@ public class Redevable implements Serializable {
     }
     
     
-
+    
 }
 
    

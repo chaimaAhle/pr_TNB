@@ -29,9 +29,10 @@ public class Terrain implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+
     private Long numeroLot;
     private String ville;
-    private String ZoneGeo;
+    private String zoneGeo;
     private BigDecimal surface;
     @OneToOne
     private Utilisateur utilisateur;
@@ -50,23 +51,22 @@ public class Terrain implements Serializable {
     public Terrain() {
     }
 
-    public Terrain(Long numeroLot, String ville, String ZoneGeo, BigDecimal surface, Date dateAchat) {
+    public Terrain(Long numeroLot) {
         this.numeroLot = numeroLot;
-        this.ville = ville;
-        this.ZoneGeo = ZoneGeo;
-        this.surface = surface;
-        this.dateAchat = dateAchat;
     }
-
-  
 
     public Terrain(String ville, String ZoneGeo, BigDecimal surface) {
         this.ville = ville;
-        this.ZoneGeo = ZoneGeo;
+        this.zoneGeo = ZoneGeo;
         this.surface = surface;
     }
 
- 
+    public Terrain(Long numeroLot, String ville, String ZoneGeo, BigDecimal surface) {
+        this.numeroLot = numeroLot;
+        this.ville = ville;
+        this.zoneGeo = ZoneGeo;
+        this.surface = surface;
+    }
 
     public Long getNumeroLot() {
         return numeroLot;
@@ -85,11 +85,11 @@ public class Terrain implements Serializable {
     }
 
     public String getZoneGeo() {
-        return ZoneGeo;
+        return zoneGeo;
     }
 
     public void setZoneGeo(String ZoneGeo) {
-        this.ZoneGeo = ZoneGeo;
+        this.zoneGeo = ZoneGeo;
     }
 
     public BigDecimal getSurface() {
@@ -186,7 +186,7 @@ public class Terrain implements Serializable {
 
     @Override
     public String toString() {
-        return "Terrain{" + "numeroLot=" + numeroLot + ", ville=" + ville + ", ZoneGeo=" + ZoneGeo + ", surface=" + surface + '}';
+        return "Terrain{" + "numeroLot=" + numeroLot + ", ville=" + ville + ", ZoneGeo=" + zoneGeo + ", surface=" + surface + '}';
     }
 
  

@@ -23,39 +23,41 @@ public class TauxTaxeService extends AbstractFacade<TauxTaxe> {
     public TauxTaxeService() {
         super(TauxTaxe.class);
     }
-    public int ajouterr(TauxTaxe tauxTaxe)
-     {
+
+    public int ajouter(TauxTaxe tauxTaxe) {
         if (tauxTaxe == null) {
             return -1;
-        } 
-        else if (tauxTaxe.getTaux()== null) {
+        } else if (tauxTaxe.getTaux() == null) {
             return -2;
-        }else{
-            tauxTaxe.setDateApplication(new Date());
-            tauxTaxe.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
-            create(tauxTaxe);
-                return 1;
-            }
-        }
-    
-
-    public int modifier(BigDecimal nvTaux, Long id) {
-        if (id == null) {
-            return -1;
-        } else if (nvTaux == null) {
-            return -2;
+        } else if (tauxTaxe.getDateApplication() == null) {
+            return -3;
         } else {
-            TauxTaxe tauxTaxe = find(id);
-            if (tauxTaxe == null) {
-                return -3;
-            } else {
-                tauxTaxe.setDateApplication(new Date());
-                tauxTaxe.setTaux(nvTaux);
-                tauxTaxe.setUtilisateur((Utilisateur) Session.getAttribut("connectedUser"));
-
-                edit(tauxTaxe);
-                return 1;
-            }
+            create(tauxTaxe);
+            return 1;
         }
     }
+
+    public int modifier(TauxTaxe tauxTaxe) {
+
+        if (tauxTaxe == null) {
+            return -1;
+        } else if (tauxTaxe.getId() == null || !tauxTaxe.getId().equals(find(tauxTaxe.getId()).getId())) {
+            return -2;
+        } else if (tauxTaxe.getTaux() == null) {
+            return -3;
+        } else if (tauxTaxe.getDateApplication() == null) {
+            return -4;
+        } else {
+            edit(tauxTaxe);
+            return 1;
+        }
+    }
+
+    public TauxTaxe findByCategorie(String nomCategorie) {
+        TauxTaxe tauxTaxe = new TauxTaxe();
+        String req = "SELECT tt from TauxTaxe tt where tt.categorieTerrain.nom='" + nomCategorie + "'";
+        tauxTaxe = (TauxTaxe) getEntityManager().createQuery(req).getSingleResult();
+        return tauxTaxe;
+    }
+
 }
