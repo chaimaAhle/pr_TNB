@@ -124,7 +124,8 @@ public class Connexion extends javax.swing.JFrame {
         if(res==1){
             Session.updateAttribute(utilisateur,"connectedUser");
             JOptionPane.showMessageDialog(null, "connection avec succes- Bienvenue"+utilisateur.getMatricule(), "INFO", JOptionPane.INFORMATION_MESSAGE);
-            new Menu().setVisible(true);
+            new Menue().setVisible(true);
+            this.dispose();
         }else{
             JOptionPane.showMessageDialog(null, "connection echouée", "ERROR", JOptionPane.ERROR_MESSAGE);
         }
