@@ -190,6 +190,8 @@ public class Redevable implements Serializable {
     public String toString() {
         return "Redevable{" + "cin=" + cin + ", nom=" + nom + ", prenom=" + prenom + ", sexe=" + sexe + ", adresse=" + adresse + ", numTel=" + numTel + ", codePost=" + codePost + '}';
     }
+
+    
     
     
     

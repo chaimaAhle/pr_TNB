@@ -8,7 +8,9 @@ package view;
 import bean.Redevable;
 import bean.Utilisateur;
 import javax.swing.JOptionPane;
+import service.HistoryService;
 import service.RedevableService;
+import service.UtilisateurService;
 import util.Session;
 
 /**
@@ -18,6 +20,8 @@ import util.Session;
 public class Ajouter_Redevable extends javax.swing.JFrame {
 
     RedevableService redevableService = new RedevableService();
+    Utilisateur utilisateur=(Utilisateur)Session.getAttribut("connectedUser");
+    HistoryService historyService=new HistoryService();
 
     /**
      * Creates new form Ajouter_Redevable
@@ -39,6 +43,7 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
         redevable.setAdresse(jTextField4.getText());
         redevable.setNumTel(jTextField5.getText());
         redevable.setCodePost(jTextField6.getText());
+        redevable.setUtilisateur(utilisateur);
         return redevable;
     }
 
@@ -194,7 +199,7 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
-                .addGap(162, 162, 162))
+                .addGap(120, 120, 120))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -229,9 +234,9 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(jLabel8)
                     .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(12, 12, 12)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(50, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -254,12 +259,13 @@ public class Ajouter_Redevable extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Redevable redevable = getParam();
-        redevable.setUtilisateur((Utilisateur)Session.getAttribut("connectedUser"));
         int res = redevableService.ajouter(redevable);
         switch (res) {
             case 1:
                 JOptionPane.showMessageDialog(null, "operation executée avec succès", "INFO", JOptionPane.INFORMATION_MESSAGE);
-                new Menu().setVisible(true);
+                historyService.saveHistory(utilisateur, "Ajout "+redevable.getCin());
+                this.setVisible(false);
+                new creeation_Terrain().setVisible(true);
                 break;
             case -1:
                 JOptionPane.showMessageDialog(null, "entrer un cin!", "ERROR", JOptionPane.ERROR_MESSAGE);

@@ -9,6 +9,7 @@ import bean.Redevable;
 import helper.RedevableHelper;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.JOptionPane;
 import service.RedevableService;
 import util.Session;
 
@@ -36,7 +37,6 @@ public class RechercherRedevable extends javax.swing.JFrame {
 public Redevable getParam(){
     Redevable redevable=new Redevable(jTextField1.getText(),jTextField2.getText(),
             jTextField3.getText(),jTextField4.getText(),jTextField5.getText());
-    System.out.println(redevable.toString());
    
     return redevable;
 }
@@ -73,16 +73,23 @@ public Redevable getParam(){
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("La recherche des redevables"));
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "La recherche des redevables", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Dialog", 1, 12), new java.awt.Color(0, 0, 0))); // NOI18N
+        jPanel1.setForeground(new java.awt.Color(255, 255, 255));
 
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
         jLabel1.setText("CIN: ");
 
+        jLabel2.setForeground(new java.awt.Color(0, 0, 0));
         jLabel2.setText("Nom:");
 
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
         jLabel3.setText("Prenom: ");
 
+        jLabel4.setForeground(new java.awt.Color(0, 0, 0));
         jLabel4.setText("Adresse: ");
 
+        jLabel5.setForeground(new java.awt.Color(0, 0, 0));
         jLabel5.setText("Code Postal: ");
 
         jTextField1.addActionListener(new java.awt.event.ActionListener() {
@@ -244,7 +251,11 @@ public Redevable getParam(){
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         resRed=redevableService.findByCritirea(getParam());
+       if(resRed==null){
+             JOptionPane.showMessageDialog(null,"Rien n'est trouver","ERROR", JOptionPane.ERROR_MESSAGE);  
+        }else{
         redevableHelper.setList(resRed);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -253,8 +264,8 @@ public Redevable getParam(){
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        new Menu().setVisible(true);
+        this.dispose();
+        new Menue().setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
@@ -266,7 +277,9 @@ public Redevable getParam(){
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-           
+           List<Redevable>resRed=redevableHelper.getList();
+Session.updateAttribute(resRed, "hani");
+new modifyRedevable().setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     /**

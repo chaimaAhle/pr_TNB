@@ -128,6 +128,11 @@ public class TauxTaxe implements Serializable {
         return true;
     }
 
+    @Override
+    public String toString() {
+        return "TauxTaxe{" + "id=" + id + ", taux=" + taux + '}';
+    }
+
     
     
  

@@ -128,7 +128,9 @@ public class TauxRetard implements Serializable {
 
     @Override
     public String toString() {
-        return "TauxRetard{" + "id=" + id + ", penalite=" + penalite.toEngineeringString() + ", premierMois=" + premierMois.toPlainString()+ ", autreMois=" + autreMois.toString() + '}';
-    }  
+        return "TauxRetard{" + "penalite=" + penalite + ", premierMois=" + premierMois + ", autreMois=" + autreMois + ", dateApplication=" + dateApplication + '}';
+    }
+
+   
 }
  

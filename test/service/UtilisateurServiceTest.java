@@ -72,7 +72,7 @@ public class UtilisateurServiceTest {
     @Test
     public void testAjouter() {
         System.out.println("ajouter");
-        Utilisateur utilisateur = new Utilisateur("chaima", "chaima","chaima", "chaima", true);
+        Utilisateur utilisateur = new Utilisateur("EE793372", "EE793372","benmansour", "mohammed", true);
         UtilisateurService instance = new UtilisateurService();
         int expResult = 1;
         int result = instance.ajouter(utilisateur);

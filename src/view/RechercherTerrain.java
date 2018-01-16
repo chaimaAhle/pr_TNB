@@ -21,7 +21,7 @@ import util.Session;
  */
 public class RechercherTerrain extends javax.swing.JFrame {
     CategorieTerrainService categorieTerrainService=new CategorieTerrainService();
-    List<CategorieTerrain>categTers=new ArrayList();
+    List<CategorieTerrain>categTers=categorieTerrainService.findAll();
    List<Terrain>resTers=new ArrayList();
     TerrainHelper terrainHelper;
     TerrainService terrainService=new TerrainService();
@@ -37,11 +37,12 @@ public class RechercherTerrain extends javax.swing.JFrame {
     
     public Terrain getParam(){
     Terrain terrain =new Terrain();
-    terrain.setNumeroLot(new Long(jTextField1.getText()));
+       
+    terrain.setNumeroLot(jTextField1.getText());
     terrain.setVille(jTextField4.getText());
     terrain.setZoneGeo(jTextField3.getText());
     terrain.setDateAchat(jDateChooser2.getDate());
-    terrain.setCategorieTerrain((CategorieTerrain) (jComboBox1.getSelectedItem()));
+    terrain.setCategorieTerrain(categTers.get(jComboBox1.getSelectedIndex()-1));
     return terrain;
 }
  
@@ -49,7 +50,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
         terrainHelper=new TerrainHelper(jTable1);
     }
       public void initComboBox1(){
-       categTers=categorieTerrainService.findAll();
+       jComboBox1.addItem("--SELECT--");
         for (int i = 0; i <categTers.size(); i++) {
             CategorieTerrain item = categTers.get(i);
             jComboBox1.addItem(item.getNom());
@@ -100,7 +101,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(170, 40, 80, 28);
+        jTextField1.setBounds(170, 40, 80, 24);
 
         jLabel2.setText("N deLot");
         getContentPane().add(jLabel2);
@@ -108,19 +109,25 @@ public class RechercherTerrain extends javax.swing.JFrame {
 
         jLabel3.setText("ville");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(370, 100, 21, 16);
+        jLabel3.setBounds(370, 100, 22, 16);
+
+        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(480, 40, 70, 28);
+        jTextField2.setBounds(480, 40, 70, 24);
 
         jLabel4.setText("zoneGeo");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(90, 90, 49, 16);
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(170, 90, 70, 28);
+        jTextField3.setBounds(170, 90, 70, 24);
 
         jLabel5.setText("surface");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(350, 40, 41, 16);
+        jLabel5.setBounds(350, 40, 44, 16);
 
         jTextField4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -128,17 +135,16 @@ public class RechercherTerrain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(420, 90, 100, 28);
+        jTextField4.setBounds(420, 90, 100, 24);
 
         jLabel6.setText("Categorie de Terrain");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(40, 160, 113, 16);
+        jLabel6.setBounds(40, 160, 116, 16);
 
         jLabel7.setText("date d'achat");
         getContentPane().add(jLabel7);
         jLabel7.setBounds(340, 150, 80, 16);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "SELECT" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox1ActionPerformed(evt);
@@ -147,7 +153,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(180, 150, 90, 26);
         getContentPane().add(jTextField5);
-        jTextField5.setBounds(620, 40, 73, 28);
+        jTextField5.setBounds(620, 40, 73, 24);
 
         jLabel8.setText("min");
         getContentPane().add(jLabel8);
@@ -155,7 +161,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
 
         jLabel9.setText("max");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(580, 40, 23, 16);
+        jLabel9.setBounds(580, 40, 25, 16);
         getContentPane().add(jDateChooser2);
         jDateChooser2.setBounds(430, 140, 160, 40);
 
@@ -189,7 +195,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(120, 200, 120, 28);
+        jButton1.setBounds(120, 200, 120, 32);
 
         jButton2.setText("Restaurer");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -198,7 +204,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton2);
-        jButton2.setBounds(247, 200, 100, 28);
+        jButton2.setBounds(247, 200, 100, 32);
 
         jButton3.setText("Menu");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
@@ -207,7 +213,7 @@ public class RechercherTerrain extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton3);
-        jButton3.setBounds(450, 200, 58, 28);
+        jButton3.setBounds(450, 200, 61, 32);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -226,7 +232,9 @@ public class RechercherTerrain extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-         resTers=terrainService.findByCriteria(getParam(),new BigDecimal(jTextField2.getText()) ,new BigDecimal(jTextField5.getText()));
+        BigDecimal sMin =new BigDecimal(jTextField2.getText()+"");
+        BigDecimal sMax=new BigDecimal(jTextField5.getText()+"");
+         resTers=terrainService.findByCriteria(getParam(),sMin,sMax);
         terrainHelper.setList(resTers);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -243,6 +251,10 @@ public class RechercherTerrain extends javax.swing.JFrame {
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField2ActionPerformed
 
     /**
      * @param args the command line arguments

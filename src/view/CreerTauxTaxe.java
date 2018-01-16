@@ -6,26 +6,30 @@
 package view;
 
 import bean.TauxTaxe;
+import bean.Utilisateur;
 import helper.TauxTaxeHelper;
 import java.math.BigDecimal;
 import javax.swing.JOptionPane;
+import service.HistoryService;
 import service.TauxTaxeService;
+import util.Session;
 
 /**
  *
  * @author simob
  */
 public class CreerTauxTaxe extends javax.swing.JFrame {
-    
+
     TauxTaxeHelper tauxTaxeHelper;
     TauxTaxeService tauxTaxeService = new TauxTaxeService();
+    HistoryService historyService = new HistoryService();
     Long id;
+    Utilisateur utilisateur = (Utilisateur) Session.getAttribut("connectedUser");
 
     private void initHelper() {
         tauxTaxeHelper = new TauxTaxeHelper(jTable1, tauxTaxeService.findAll());
     }
 
-    
     /**
      * Creates new form CreerTauxTaxe
      */
@@ -34,12 +38,14 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
         initHelper();
     }
 
-    public TauxTaxe getParam(){
-        TauxTaxe tauxTaxe=new TauxTaxe();
+    public TauxTaxe getParam() {
+        TauxTaxe tauxTaxe = new TauxTaxe();
         tauxTaxe.setTaux(new BigDecimal(jTextField1.getText()));
         tauxTaxe.setDateApplication(jDateChooser1.getDate());
+        tauxTaxe.setUtilisateur(utilisateur);
         return tauxTaxe;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -58,6 +64,7 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton3 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -99,6 +106,13 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(jTable1);
 
+        jButton3.setText("Menu");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -129,11 +143,15 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jButton3))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(82, 82, 82)
+                .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(62, 62, 62)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -165,12 +183,13 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        TauxTaxe tauxTaxe=getParam();
-        int res=tauxTaxeService.ajouter(tauxTaxe);
+        TauxTaxe tauxTaxe = getParam();
+        int res = tauxTaxeService.ajouter(tauxTaxe);
         switch (res) {
             case 1:
                 JOptionPane.showMessageDialog(null, "creation avec succes", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 tauxTaxeHelper.save(tauxTaxe);
+                historyService.saveHistory(utilisateur, "ajout de " + tauxTaxe.toString());
                 break;
             case -1:
                 JOptionPane.showMessageDialog(null, "veuillez saisir les données", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -189,11 +208,12 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         TauxTaxe tauxTaxe = getParam();
         tauxTaxe.setId(id);
-      int res=tauxTaxeService.modifier(tauxTaxe);
-      switch (res) {
+        int res = tauxTaxeService.modifier(tauxTaxe);
+        switch (res) {
             case 1:
                 JOptionPane.showMessageDialog(null, "modification avec succes", "INFO", JOptionPane.INFORMATION_MESSAGE);
                 tauxTaxeHelper.update(tauxTaxe);
+                historyService.saveHistory(utilisateur, "modification de " + tauxTaxe.toString());
                 break;
             case -1:
                 JOptionPane.showMessageDialog(null, "veuillez saisir les données", "ERROR", JOptionPane.ERROR_MESSAGE);
@@ -210,16 +230,21 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
             default:
                 throw new AssertionError();
         }
-        
+
         tauxTaxeHelper.update(tauxTaxe);
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
-        TauxTaxe tauxTaxe=tauxTaxeHelper.getSelected();
-        id=tauxTaxe.getId();
-        jTextField1.setText(tauxTaxe.getTaux()+"");
+        TauxTaxe tauxTaxe = tauxTaxeHelper.getSelected();
+        id = tauxTaxe.getId();
+        jTextField1.setText(tauxTaxe.getTaux() + "");
         jDateChooser1.setDate(tauxTaxe.getDateApplication());
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+        this.dispose();
+        new Menue().setVisible(true);
+    }//GEN-LAST:event_jButton3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -259,6 +284,7 @@ public class CreerTauxTaxe extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton3;
     private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

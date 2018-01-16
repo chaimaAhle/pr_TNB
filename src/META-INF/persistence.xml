@@ -3,6 +3,7 @@
   <persistence-unit name="tnbPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
     <class>bean.CategorieTerrain</class>
+    <class>bean.History</class>
     <class>bean.LigneNotification</class>
     <class>bean.Notification</class>
     <class>bean.Redevable</class>
@@ -12,7 +13,7 @@
     <class>bean.Terrain</class>
     <class>bean.Utilisateur</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tnb3?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/tnb6?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value=""/>
